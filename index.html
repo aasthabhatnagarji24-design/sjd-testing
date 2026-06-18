@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Jal Dhara - Pure Water, Every Day | Sanchi & Salamatpur</title>
+    <meta name="description" content="Get pure, reliable daily 20L water jars and camper supplies in Sanchi & Salamatpur. 2000 LPH RO + UV purification. Easy jar tracking and transparent refills.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="glass-panel">
+        <div class="header-container">
+            <div class="logo-section" onclick="navigateTo('home')" style="display: flex; align-items: center; gap: 10px;">
+                <img src="assets/logo.png" alt="Shri Jal Dhara Logo" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-light); box-shadow: 0 2px 8px rgba(2, 132, 199, 0.2);">
+                <span class="logo-title">Shri Jal Dhara</span>
+            </div>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="navMenu">
+                <ul class="nav-links">
+                    <li class="nav-item active" onclick="navigateTo('home')">Home</li>
+                    <li class="nav-item" onclick="navigateTo('services')">Services</li>
+                    <li class="nav-item" onclick="navigateTo('schedules')">Daily Delivery Schedules</li>
+                    <li class="nav-item" onclick="navigateTo('about')">About Us</li>
+                    <li class="nav-item" onclick="navigateTo('careers')">Careers</li>
+                    <li class="nav-item" onclick="navigateTo('contact')">Contact</li>
+                    <li class="nav-item admin-nav-link" onclick="navigateTo('admin')" style="color: var(--accent); font-weight: bold; margin-left: 8px;">Admin Portal</li>
+                </ul>
+                <button class="connect-btn" onclick="navigateTo('contact')">Connect</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Views Container -->
+    <main>
+
+        <!-- HOME PAGE -->
+        <section id="home-view" class="page-view active">
+            <!-- Hero Section -->
+            <div class="hero-wrapper glass-panel">
+                <div class="hero-text">
+                    <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <img src="assets/logo.png" alt="SJD Logo" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover;">
+                        Trusted by 500+ Families & Offices
+                    </div>
+                    <h1>Shri Jal Dhara – <br><span>Pure Water, Every Day.</span></h1>
+                    <p class="hero-sub">We supply clean 20-liter RO + UV purified water jars and campers to homes, housing societies, offices, and events in Sanchi and Salamatpur. Safe, pure, and delivered right to your door.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="navigateTo('contact', 'booking-tab')">
+                            Book Daily Delivery
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </button>
+                        <button class="btn-secondary" onclick="navigateTo('services')">
+                            View Purity Standards
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-media">
+                    <div class="droplet drop-1"></div>
+                    <div class="droplet drop-2"></div>
+                    <div class="hero-image-container">
+                        <img src="assets/delivery_girl_illustration.png" alt="Pure Water Delivery Service Shri Jal Dhara Sanchi">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Services Introduction -->
+            <div class="section-intro">
+                <h2>Our Services</h2>
+                <p>We fit right into your daily routine to keep you hydrated and healthy. We deliver on time, every single day.</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Card 1 -->
+                <div class="card glass-panel">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    </div>
+                    <h3>Jar & Camper Supply</h3>
+                    <p>Get clean 20-liter water jars and insulated campers for daily home or office use. We treat our water using advanced RO + UV systems so it is completely safe to drink.</p>
+                    <button class="card-btn" onclick="navigateTo('services', 'simulator')">
+                        See Process
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card glass-panel">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3>Event Supply</h3>
+                    <p>Planning a wedding, party, or business meeting? We supply bulk purified water jars. We plan our delivery routes carefully so your water arrives exactly on time.</p>
+                    <button class="card-btn" onclick="navigateTo('schedules')">
+                        View Routes
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Delivery Management Summary -->
+            <div class="split-section glass-panel">
+                <div class="split-content">
+                    <h2>We Deliver Reliable Water Every Single Day</h2>
+                    <p>You never have to worry about running out of safe drinking water. We create fixed delivery routes and schedules for Sanchi, Salamatpur, and nearby locations. Our delivery team is polite, punctual, and highly consistent. We fit perfectly into the daily schedules of homes, offices, and housing societies.</p>
+                    <button class="btn-primary" onclick="navigateTo('contact')">
+                        Talk to Our Team
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </button>
+                </div>
+                <div class="split-media">
+                    <img src="assets/purification_machinery.png" alt="Shri Jal Dhara RO Purification Machinery" style="width: 100%; height: 100%; object-fit: contain; background: rgba(2, 132, 199, 0.03);">
+                </div>
+            </div>
+
+            <!-- Customer Support Overview -->
+            <div class="split-section glass-panel">
+                <div class="split-media">
+                    <img src="assets/delivery_girl_illustration.png" alt="Transparent customer support operations and jar refill logs">
+                </div>
+                <div class="split-content">
+                    <h2>Always Here to Help You</h2>
+                    <p>We believe in honest and transparent services. We track every single refill, returned jar, and empty container carefully. If you ever have a question or issue, our customer support team is always ready to assist you quickly.</p>
+                    
+                    <ul class="support-checklist">
+                        <li class="support-checklist-item">
+                            <div class="check-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            </div>
+                            <div class="checklist-info">
+                                <h4>Refill cycles tracked</h4>
+                                <p>We record every bottle we deliver and return. You will never pay for a missing bottle by mistake.</p>
+                            </div>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            </div>
+                            <div class="checklist-info">
+                                <h4>Discrepancies resolved fast</h4>
+                                <p>If there is any difference in your jar count, we check our records and fix it immediately.</p>
+                            </div>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            </div>
+                            <div class="checklist-info">
+                                <h4>Purity reports on demand</h4>
+                                <p>We test our water quality daily. We are happy to share our lab purity reports whenever you ask.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <button class="btn-primary" onclick="navigateTo('contact', 'support-tab')">
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+
+            <!-- Water Purity Standards Teaser -->
+            <div class="purity-teaser-wrapper glass-panel">
+                <div class="stat-item">
+                    <span class="stat-num">2000 LPH</span>
+                    <span class="stat-label">Plant Capacity</span>
+                    <span class="stat-desc">2000 Liters Per Hour of clean water.</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">RO + UV + TDS + pH</span>
+                    <span class="stat-label">Purification Process</span>
+                    <span class="stat-desc">Complete protection from impurities.</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">Sanchi & Salamatpur</span>
+                    <span class="stat-label">Service Region</span>
+                    <span class="stat-desc">Quick local delivery across Raisen.</span>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-bottom: 60px; text-align: center;">
+                <button class="btn-secondary" style="display: inline-flex;" onclick="navigateTo('services')">
+                    Learn More About Our Purity Standards &rarr;
+                </button>
+            </div>
+        </section>
+
+
+        <!-- SERVICES PAGE -->
+        <section id="services-view" class="page-view">
+            <!-- Services Page Hero Banner -->
+            <div class="hero-wrapper glass-panel" style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(255, 255, 255, 0.6);">
+                <div class="hero-text" style="grid-column: span 2; text-align: center; align-items: center; gap: 16px;">
+                    <img src="assets/logo.png" alt="Shri Jal Dhara Logo" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); margin-bottom: 8px;">
+                    <div class="hero-badge">
+                        <span class="dot"></span>
+                        Shri Jal Dhara Services
+                    </div>
+                    <h1 style="font-size: 3rem;">Services that keep your water <span>always ready</span></h1>
+                    <p class="hero-sub" style="max-width: 750px; font-size: 1.15rem; line-height: 1.6;">We deliver safe 20L water jars and campers every day to homes, societies, offices, and events in and around Sanchi and Salamatpur. With a 2000 LPH RO + UV plant, fixed routes, and clear tracking, you get safe drinking water without stress.</p>
+                    <button class="btn-primary" onclick="navigateTo('contact')" style="margin-top: 10px;">
+                        Set Up My Delivery
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Branded Product Showcase Section -->
+            <div class="section-intro" style="margin-top: 40px; margin-bottom: 24px;">
+                <h2>Our Branded Water Products</h2>
+                <p>Pure water in three convenient formats. Purified at our 2000 LPH plant and delivered direct to you in Sanchi and Salamatpur.</p>
+            </div>
+
+            <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px;">
+                <!-- Product 1: Water Jar -->
+                <div class="card glass-panel" style="padding: 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+                    <div style="width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; background: rgba(2, 132, 199, 0.03); border-radius: 12px; padding: 10px;">
+                        <img src="assets/single_jar.png" alt="Shri Jal Dhara 20L Pure Water Jar Sanchi" style="max-height: 100%; max-width: 100%; object-fit: contain; filter: drop-shadow(0 8px 12px rgba(2,132,199,0.15));">
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 8px;">20L Pure Water Jar</h4>
+                        <p style="font-size: 0.9rem; line-height: 1.55; color: var(--text-muted); margin-bottom: 16px;">Our classic 20-liter standard bubble jar. Safe, purified through multi-stage RO + UV, and delivered daily on a fixed schedule. Ideal for families and daily office hydration.</p>
+                    </div>
+                    <span class="status-tag" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); font-weight: 600;">Standard Rate: ₹30/Jar</span>
+                </div>
+
+                <!-- Product 2: Insulated Camper -->
+                <div class="card glass-panel" style="padding: 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+                    <div style="width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; background: rgba(2, 132, 199, 0.03); border-radius: 12px; padding: 10px;">
+                        <img src="assets/camper.png" alt="Shri Jal Dhara 20L Insulated Camper Sanchi" style="max-height: 100%; max-width: 100%; object-fit: contain; filter: drop-shadow(0 8px 12px rgba(2,132,199,0.15));">
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 8px;">20L Insulated Camper</h4>
+                        <p style="font-size: 0.9rem; line-height: 1.55; color: var(--text-muted); margin-bottom: 16px;">Sealed 20-liter container with an active carry handle and a bottom dispensing tap. Perfect for housing societies, outdoor event setups, weddings, and summer community gatherings.</p>
+                    </div>
+                    <span class="status-tag" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); font-weight: 600;">Standard Rate: ₹40/Camper</span>
+                </div>
+            </div>
+
+            <!-- Warehouse Inventory & Capacity Showcase -->
+            <div class="split-section glass-panel" style="margin-bottom: 60px;">
+                <div class="split-content">
+                    <div class="hero-badge" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; border: 1px solid rgba(2, 132, 199, 0.15);">
+                        <span class="dot" style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span>
+                        Large Ready Stock Inventory
+                    </div>
+                    <h2>Equipped for Bulk & Corporate Demand</h2>
+                    <p>We maintain a massive stock of sanitized, freshly refilled 20L water jars and insulated campers at our central Sanchi warehouse. This ensures we can fulfill large, sudden orders for weddings, local community festivals, corporate gatherings, and showrooms instantly. Every container is strictly washed and sanitized before bottling.</p>
+                    <div style="display: flex; gap: 24px; margin-top: 20px;">
+                        <div>
+                            <h4 style="font-size: 1.8rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 2px;">500+</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Jars Ready Daily</p>
+                        </div>
+                        <div style="border-left: 1px solid rgba(0, 0, 0, 0.1); padding-left: 24px;">
+                            <h4 style="font-size: 1.8rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 2px;">200+</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Insulated Campers Stock</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="split-media" style="border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); height: 280px;">
+                    <img src="assets/camper_warehouse_stack.jpg" alt="Shri Jal Dhara large camper stock ready for bulk delivery Sanchi" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px; transition: transform 0.5s ease;">
+                </div>
+            </div>
+
+            <!-- Service Overview - Main Buckets -->
+            <div class="section-intro">
+                <h2>Our Water Delivery Services</h2>
+                <p>Choose the service that fits your daily life. We handle the plant, the routes, and the tracking. You just enjoy clean, safe water.</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 48px;">
+                <!-- Card 1: Daily Jar Delivery for Homes -->
+                <div class="card glass-panel">
+                    <div class="card-icon" style="background: rgba(2, 132, 199, 0.12); color: var(--primary);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.45rem;">Daily Jar Delivery for Homes</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: -8px;">Fresh 20L jars at your doorstep, on a fixed schedule.</p>
+                    <p>We plan your daily or alternate-day jar delivery based on your family size and use. Our team brings sealed, RO + UV treated jars to your home and takes back empty jars on the same visit, so your space stays clear and your water never runs out.</p>
+                    
+                    <ul class="support-checklist" style="margin: 0; padding-top: 10px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Clean 20L jars for daily home use</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Fixed delivery days and time slots</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Easy change in jar count when guests come</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Simple monthly billing and clear records</p>
+                        </li>
+                    </ul>
+
+                    <button class="btn-secondary" onclick="navigateTo('contact', 'booking-tab')" style="margin-top: 16px; padding: 10px 20px; font-size: 0.95rem;">
+                        Start Home Delivery
+                    </button>
+                </div>
+
+                <!-- Card 2: Housing Societies & Apartments -->
+                <div class="card glass-panel">
+                    <div class="card-icon" style="background: rgba(13, 148, 136, 0.12); color: var(--accent);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.45rem;">Water Supply for Housing Societies</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: -8px;">Route-based delivery for full buildings and campuses.</p>
+                    <p>We work with small and large housing societies to manage daily jar and camper supply. Our team plans routes, tracks jar in/out counts, and keeps a clear record for each building or block. This helps your society office avoid confusion and complaints.</p>
+                    
+                    <ul class="support-checklist" style="margin: 0; padding-top: 10px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Route planning for each building or tower</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Attendance-style jar tracking for every flat or block</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Clear monthly reports for the society office</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Fast support for missing or extra jar issues</p>
+                        </li>
+                    </ul>
+
+                    <button class="btn-secondary" onclick="navigateTo('contact')" style="margin-top: 16px; padding: 10px 20px; font-size: 0.95rem;">
+                        Talk About Society Supply
+                    </button>
+                </div>
+
+                <!-- Card 3: Offices, Shops & Businesses -->
+                <div class="card glass-panel">
+                    <div class="card-icon" style="background: rgba(3, 105, 161, 0.12); color: var(--primary-dark);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 16.5h1.5m3 0H15M10.5 21v-3a1.5 1.5 0 00-3 0v3m9 0v-3a1.5 1.5 0 00-3 0v3"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.45rem;">Water Jars for Offices and Shops</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: -8px;">Clean drinking water for your staff and customers.</p>
+                    <p>We supply 20L jars and campers to offices, showrooms, clinics, and small businesses on fixed days. You get a fixed delivery plan that matches your working hours. We track how many jars you receive and return so your staff does not have to chase the delivery team.</p>
+                    
+                    <ul class="support-checklist" style="margin: 0; padding-top: 10px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Regular jar supply for staff and visitors</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Delivery timing matched to your office hours</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Clear jar in/out records for your accounts</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Easy way to increase or reduce jar count</p>
+                        </li>
+                    </ul>
+
+                    <button class="btn-secondary" onclick="navigateTo('contact')" style="margin-top: 16px; padding: 10px 20px; font-size: 0.95rem;">
+                        Plan Office Supply
+                    </button>
+                </div>
+
+                <!-- Card 4: Events & Bulk Supply -->
+                <div class="card glass-panel">
+                    <div class="card-icon" style="background: rgba(13, 148, 136, 0.12); color: var(--accent-light);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 0l-1.5.546m1.5-.546V21M3.75 21V6.136c0-.602.428-1.113 1.022-1.22l8.25-1.5c.668-.121 1.278.388 1.278 1.066V16.5M9.75 9h.008v.008H9.75V9zm0 3h.008v.008H9.75V12zm0 3h.008v.008H9.75V15z"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.45rem;">Event & Bulk Water Supply</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: -8px;">Bulk water for one-time or short events.</p>
+                    <p>Hosting a function, wedding, or community event in Sanchi? We plan bulk jar and camper supply based on your guest count and event time. Our team sets up a clear delivery and pickup plan so you always have enough safe drinking water on site.</p>
+                    
+                    <ul class="support-checklist" style="margin: 0; padding-top: 10px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Bulk jars and campers for events</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Delivery and pickup planned by time slot</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Extra buffer stock for peak hours</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 0.95rem;">Support team on call during your event</p>
+                        </li>
+                    </ul>
+
+                    <button class="btn-secondary" onclick="navigateTo('contact')" style="margin-top: 16px; padding: 10px 20px; font-size: 0.95rem;">
+                        Book Event Supply
+                    </button>
+                </div>
+            </div>
+
+            <!-- Purification Process - 2000 LPH RO + UV Details -->
+            <div class="section-intro" style="margin-top: 60px; margin-bottom: 30px;">
+                <h2>How We Purify Your Water</h2>
+                <p>Our plant is built to give you safe, clear, and good-tasting water every single day.</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 40px;">
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <h4 style="color: var(--primary); font-size: 1.25rem;">2000 LPH Plant Capacity</h4>
+                    <p>Our plant can treat up to 2000 litres of water per hour. This high capacity helps us serve many homes and societies across Sanchi and Salamatpur without any drop in water quality.</p>
+                </div>
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <h4 style="color: var(--primary); font-size: 1.25rem;">RO + UV + TDS + pH Checks</h4>
+                    <p>Water passes through RO membranes, UV treatment, and other modern filters. We keep a close eye on TDS (dissolved solids) and pH levels so the water is completely safe and pleasant to drink.</p>
+                </div>
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <h4 style="color: var(--primary); font-size: 1.25rem;">Food-Grade Jars & Campers</h4>
+                    <p>We use premium food-grade plastic jars and campers that are thoroughly washed and sanitized inside automated cleaning lines before refilling. Each jar is checked for micro-cracks and leaks.</p>
+                </div>
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <h4 style="color: var(--primary); font-size: 1.25rem;">Regular Plant Maintenance</h4>
+                    <p>Our team follows a strict daily cleaning and maintenance schedule for the plant membranes. This keeps our purification systems running healthily and prevents supply breakdowns.</p>
+                </div>
+            </div>
+
+            <div class="glass-panel text-center" style="padding: 20px; margin-bottom: 48px; text-align: center;">
+                <p style="font-size: 1.05rem; font-weight: 500; color: var(--text-main);">💡 <strong>Purity Promise:</strong> We can share official water purity lab reports and plant quality details with your society office or company management on request!</p>
+            </div>
+
+            <!-- Dynamic Purity Simulator Section (Kept for Interactive Wow Factor) -->
+            <div id="simulator" class="purity-simulator-panel glass-panel" style="margin-bottom: 60px;">
+                <div class="simulator-title-row">
+                    <h3>Interactive Purity Simulator</h3>
+                    <p style="margin-top: 8px;">Click on each purification step below to see how our 2000 LPH plant filters your water!</p>
+                </div>
+
+                <div class="simulator-flow">
+                    <div class="simulator-step active" onclick="activateStep(1)" id="step1">
+                        <h4>1. Reverse Osmosis (RO)</h4>
+                        <p>High pressure filtration</p>
+                    </div>
+                    <div class="simulator-step" onclick="activateStep(2)" id="step2">
+                        <h4>2. Ultra Violet (UV)</h4>
+                        <p>Bacterial elimination</p>
+                    </div>
+                    <div class="simulator-step" onclick="activateStep(3)" id="step3">
+                        <h4>3. TDS Controller</h4>
+                        <p>Minerals balance</p>
+                    </div>
+                    <div class="simulator-step" onclick="activateStep(4)" id="step4">
+                        <h4>4. pH Balancer</h4>
+                        <p>Healthy alkalinity</p>
+                    </div>
+                </div>
+
+                <div class="simulator-display">
+                    <div class="simulator-visual">
+                        <div class="water-fill-level" id="waterLevel" style="height: 40%;"></div>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                    </div>
+                    <div class="simulator-desc">
+                        <h5 id="simulatorStepName">Step 1: Reverse Osmosis (RO) Treatment</h5>
+                        <p id="simulatorStepText">Our high-pressure RO membrane forces water through tiny pores. This step filters out micro-particles, heavy salts, and dust. It reduces excess dissolved solids, leaving behind light, refreshing water.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery & Jar Tracking System -->
+            <div class="section-intro" style="margin-bottom: 30px;">
+                <h2>How Our Delivery & Jar Tracking Works</h2>
+                <p>We treat every jar like an item in inventory. This keeps your jar counts clear and your monthly bills simple.</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 48px;">
+                <div class="card glass-panel" style="padding: 24px;">
+                    <h4 style="color: var(--accent); margin-bottom: 10px;">Fixed Route Planning</h4>
+                    <p>We group homes, housing societies, and offices into regular fixed routes. Each route has set timings, so you know exactly when to expect our delivery truck and drivers.</p>
+                </div>
+                <div class="card glass-panel" style="padding: 24px;">
+                    <h4 style="color: var(--accent); margin-bottom: 10px;">Attendance-Style Jar Tracking</h4>
+                    <p>Every time we deliver refills or collect empty containers, we mark it like attendance: jars in, jars out. This makes it easy for both you and us to see how many jars are at your location at any time.</p>
+                </div>
+                <div class="card glass-panel" style="padding: 24px;">
+                    <h4 style="color: var(--accent); margin-bottom: 10px;">Daily and Monthly Records</h4>
+                    <p>We keep neat daily and monthly digital records of jar movements. You can ask our team for a ledger summary at any time to match with your own calendar notes or society records.</p>
+                </div>
+                <div class="card glass-panel" style="padding: 24px;">
+                    <h4 style="color: var(--accent); margin-bottom: 10px;">Clear Billing & Transparency</h4>
+                    <p>Because jar counts are tracked step-by-step, your monthly bills are calculated based on clear, verified numbers. This reduces confusion and saves time for both sides.</p>
+                </div>
+            </div>
+
+            <div class="glass-panel" style="padding: 30px; margin-bottom: 60px; text-align: center; background: linear-gradient(135deg, rgba(13, 148, 136, 0.05), rgba(2, 132, 199, 0.05)); border: 1px solid var(--surface-border);">
+                <p style="font-size: 1.1rem; color: var(--text-main); line-height: 1.6; font-weight: 500;">
+                    🛡️ <strong>Safety Shield Note:</strong> This attendance-style tracking system protects both you and us. You always know exactly how many jars you should have at home or in your building. No disputes, no missing jar fees!
+                </p>
+            </div>
+
+            <!-- Complaint & Support Handling -->
+            <div class="split-section glass-panel" style="margin-bottom: 60px;">
+                <div class="split-content">
+                    <h2>Support When You Need It</h2>
+                    <p>If there is ever a problem with delivery, jar count, or water quality, we act fast. If you ever face a problem—late delivery, jar count mismatch, taste issue, or damaged jar—our support team is ready to help. We log every complaint, assign it to the right route helper, and close it as fast as possible.</p>
+                    
+                    <ul class="support-checklist" style="margin: 0; padding-bottom: 10px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                            <p style="font-size: 0.95rem;"><strong>Easy ways to reach us:</strong> You can call, WhatsApp or email our support team. We log every complaint with date, time and route.</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                            <p style="font-size: 0.95rem;"><strong>Jar count issues:</strong> If you feel jar numbers do not match, we check our records and your notes. We then adjust counts in a clear and fair way.</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                            <p style="font-size: 0.95rem;"><strong>Delivery delays or missed visits:</strong> If a delivery is late or missed, we try to cover it in the same day or next slot. We also update your route notes so it does not repeat.</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                            <p style="font-size: 0.95rem;"><strong>Water quality concerns:</strong> If you ever feel the water is not right, we replace the jars and check the batch at the plant. You can also ask for recent TDS readings.</p>
+                        </li>
+                    </ul>
+
+                    <button class="btn-primary" onclick="navigateTo('contact', 'support-tab')" style="margin-top: 10px;">
+                        Contact Support Team
+                    </button>
+                </div>
+                <div class="split-media">
+                    <img src="assets/delivery_girl_illustration.png" alt="Fast customer complaint support logs Sanchi Salamatpur MP">
+                </div>
+            </div>
+
+            <!-- Service Area - Where We Deliver -->
+            <div class="split-section glass-panel" style="margin-bottom: 60px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.03), rgba(13, 148, 136, 0.03));">
+                <div class="split-media">
+                    <div class="footer-map-container" style="height: 100%;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14646.611681289658!2d77.7259163!3d23.4910688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c11f4347715b7%3A0xc39f99df8996b00b!2sSanchi%2C%20Madhya%20Pradesh%20464661!5e0!3m2!1sen!2sin!4v1715962451000!5m2!1sen!2sin" loading="lazy" style="width: 100%; height: 100%; border:0;"></iframe>
+                    </div>
+                </div>
+                <div class="split-content">
+                    <h2>Where We Deliver</h2>
+                    <p>We currently serve Sanchi, Salamatpur, and nearby areas in Raisen district, Madhya Pradesh. If you are not sure whether we cover your location, just share your address and we will confirm immediately!</p>
+                    
+                    <ul class="support-checklist" style="margin: 0; padding-bottom: 10px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 1rem; font-weight: 600;">Sanchi</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 1rem; font-weight: 600;">Salamatpur</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 1rem; font-weight: 600;">Nearby colonies, societies, and outer zones in Raisen (MP)</p>
+                        </li>
+                    </ul>
+
+                    <button class="btn-primary" onclick="navigateTo('contact')" style="margin-top: 10px;">
+                        Check My Area
+                    </button>
+                </div>
+            </div>
+
+            <!-- Why Choose Shri Jal Dhara -->
+            <div class="glass-panel" style="padding: 40px; margin-bottom: 60px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(13, 148, 136, 0.08)); border: 1px solid rgba(2, 132, 199, 0.2);">
+                <div class="section-intro" style="margin-bottom: 30px;">
+                    <h2>Why Customers Choose Us</h2>
+                    <p>We combine advanced purification with standard on-time delivery systems to bring you absolute peace of mind.</p>
+                </div>
+
+                <ul class="support-checklist" style="max-width: 800px; margin: 0 auto 30px auto; gap: 20px;">
+                    <li class="support-checklist-item">
+                        <div class="check-icon" style="background: rgba(13, 148, 136, 0.2); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                        <p style="font-size: 1.05rem; color: var(--text-main);"><strong>Daily and route-based delivery:</strong> Servicing homes, housing societies, offices, and events on a solid daily routine.</p>
+                    </li>
+                    <li class="support-checklist-item">
+                        <div class="check-icon" style="background: rgba(13, 148, 136, 0.2); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                        <p style="font-size: 1.05rem; color: var(--text-main);"><strong>2000 LPH RO + UV Plant:</strong> High quality state-of-the-art purification with strict regular checkups.</p>
+                    </li>
+                    <li class="support-checklist-item">
+                        <div class="check-icon" style="background: rgba(13, 148, 136, 0.2); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                        <p style="font-size: 1.05rem; color: var(--text-main);"><strong>Clear Jar tracking:</strong> Transparent inventory attendance system matching every jar supplied against empty returns.</p>
+                    </li>
+                    <li class="support-checklist-item">
+                        <div class="check-icon" style="background: rgba(13, 148, 136, 0.2); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                        <p style="font-size: 1.05rem; color: var(--text-main);"><strong>Simple, honest billing:</strong> Invoicing based entirely on real, verified jar movement records.</p>
+                    </li>
+                    <li class="support-checklist-item">
+                        <div class="check-icon" style="background: rgba(13, 148, 136, 0.2); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                        <p style="font-size: 1.05rem; color: var(--text-main);"><strong>Friendly Support:</strong> Responsive route supervisors that listen, resolve count discrepancies, and fix missed visits fast.</p>
+                    </li>
+                </ul>
+
+                <div class="text-center" style="text-align: center; border-top: 1px dashed rgba(2, 132, 199, 0.2); padding-top: 30px;">
+                    <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--primary-dark);">Ready to set up your water delivery?</h4>
+                    <button class="btn-primary" style="display: inline-flex;" onclick="navigateTo('contact')">
+                        Set Up My Delivery
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SCHEDULES PAGE -->
+        <section id="schedules-view" class="page-view">
+            <!-- Hero / Intro Section (Delivery Information) -->
+            <div class="hero-wrapper glass-panel" style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(255, 255, 255, 0.6);">
+                <div class="hero-text" style="grid-column: span 2; text-align: center; align-items: center; gap: 16px;">
+                    <img src="assets/logo.png" alt="Shri Jal Dhara Logo" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); margin-bottom: 8px;">
+                    <div class="hero-badge" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);">
+                        <span class="dot" style="background: var(--accent-light); box-shadow: 0 0 8px var(--accent-light);"></span>
+                        Daily Delivery Schedules – When We Deliver to Your Area
+                    </div>
+                    <h1 style="font-size: 3rem;">Check when our <span>team comes to your area</span></h1>
+                    <p class="hero-sub" style="max-width: 800px; font-size: 1.15rem; line-height: 1.6;">Shri Jal Dhara follows fixed routes and time slots for most areas. This page helps you see the usual delivery window for your home, society, office, or shop. Timings can change a bit due to traffic or weather, but we try our best to stay close to this plan.</p>
+                </div>
+            </div>
+
+             <!-- Delivery Information Overview -->
+             <div class="split-section glass-panel" style="margin-bottom: 48px;">
+                 <div class="split-content">
+                     <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 16px;">How Our Delivery Works</h3>
+                     <div style="display: flex; flex-direction: column; gap: 16px; line-height: 1.6;">
+                         <div>
+                             <h4 style="font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 4px;">📍 Fixed Delivery Routes</h4>
+                             <p style="font-size: 0.95rem; margin: 0; color: var(--text-main);">We follow set routes across Sanchi, Salamatpur, and nearby regions. This keeps our service structured and ensures our trucks cover every neighborhood regularly without missing slots.</p>
+                         </div>
+                         <div>
+                             <h4 style="font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 4px;">⏳ Why Schedules Matter</h4>
+                             <p style="font-size: 0.95rem; margin: 0; color: var(--text-main);">Knowing your time window helps you keep your empty 20L jars or campers ready. This makes exchanges extremely fast at your doorstep and prevents missed delivery visits.</p>
+                         </div>
+                         <div>
+                             <h4 style="font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 4px;">☁️ Traffic & Weather Changes</h4>
+                             <p style="font-size: 0.95rem; margin: 0; color: var(--text-main);">While we try our best to stick to this schedule, road work, heavy monsoon rain, or sudden peak demand can cause slight shifts. We appreciate your patience during these times.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="split-media" style="border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); height: 100%; min-height: 320px;">
+                     <img src="assets/delivery_coordinator_truck.jpg" alt="Shri Jal Dhara delivery truck Tata Ace dispatching jars Sanchi" style="width: 100%; height: 100%; object-fit: contain; background: rgba(2, 132, 199, 0.03); border-radius: 16px;">
+                 </div>
+             </div>
+
+            <!-- Main Routes and Timings (Route Finder Database) -->
+
+
+            <!-- Scheduling Options Section -->
+            <div style="margin-bottom: 48px;">
+                <h3 style="font-size: 1.8rem; text-align: center; color: var(--primary-dark); margin-bottom: 12px;">Scheduling Options</h3>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 24px auto; color: var(--text-muted); font-size: 0.95rem;">You can request your preferred delivery slot when you set up your plan. Our team will try our best to match it within our fixed route hours.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                    <!-- Option 1: Morning Delivery -->
+                    <div class="card glass-panel" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--primary);">
+                        <div>
+                            <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 12px;">🌅 Morning Delivery</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 16px; color: var(--text-main);">This slot is perfect for homes, housing societies, and families who need safe water ready before breakfast. We drop off your refills early so you are fully set for the day ahead.</p>
+                        </div>
+                        <button class="btn-secondary" style="width: 100%; justify-content: center;" onclick="switchContactForm('booking'); navigateTo('contact');">Inquire for Morning</button>
+                    </div>
+
+                    <!-- Option 2: Afternoon Delivery -->
+                    <div class="card glass-panel" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--accent);">
+                        <div>
+                            <h4 style="font-size: 1.25rem; color: var(--accent); margin-bottom: 12px;">☀️ Afternoon Delivery</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 16px; color: var(--text-main);">Best suited for commercial offices, clinics, private shops, and small businesses on main roads. We deliver during regular working hours to avoid disrupting your morning startup routine.</p>
+                        </div>
+                        <button class="btn-secondary" style="width: 100%; justify-content: center;" onclick="switchContactForm('booking'); navigateTo('contact');">Inquire for Afternoon</button>
+                    </div>
+
+                    <!-- Option 3: Emergency / Priority Delivery -->
+                    <div class="card glass-panel" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--primary-dark);">
+                        <div>
+                            <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 12px;">🚨 Emergency / Priority</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 16px; color: var(--text-main);">If you run out of safe drinking water unexpectedly, this priority service ensures an extra refill trip is scheduled immediately, subject to route truck slot availability on the day.</p>
+                        </div>
+                        <button class="btn-secondary" style="width: 100%; justify-content: center;" onclick="switchContactForm('support'); navigateTo('contact');">Request Emergency Refill</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Management & Tracking Section -->
+            <div class="grid-2" style="margin-bottom: 48px; gap: 32px; align-items: stretch;">
+                <!-- Column 1: Order Changes -->
+                <div class="card glass-panel" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 12px;">Order Management & Changes</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main); margin-bottom: 16px;">
+                            Need to pause delivery while traveling? Or want to increase your jar count for the week? We make changes simple. You can manage your orders instantly through our direct contact options:
+                        </p>
+                        <ul class="support-checklist" style="margin: 0 0 20px 0; gap: 10px;">
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem;">Call our central helpline for instant manual updates.</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem;">Send a quick WhatsApp message to route managers.</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem;">Submit an online schedule adjustment form via our Contact page.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px;">
+                        <span class="status-tag status-active" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); font-weight: 600; cursor: pointer;" onclick="window.location.href='tel:+919183355900'">📞 Call Support</span>
+                        <span class="status-tag status-active" style="background: rgba(13, 148, 136, 0.1); color: var(--accent); font-weight: 600; cursor: pointer;" onclick="window.open('https://wa.me/919183355900')">💬 WhatsApp Line</span>
+                    </div>
+                </div>
+
+                <!-- Column 2: Attendance Tracking -->
+                <div class="card glass-panel" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 12px;">Attendance-Style Jar Tracking</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main); margin-bottom: 16px;">
+                            We don't believe in confusing calculations. Our delivery drivers follow an attendance-style inventory tracking system. On every visit, we count exactly how many jars are supplied and how many empty return containers are collected.
+                        </p>
+                        <ul class="support-checklist" style="margin: 0 0 20px 0; gap: 10px;">
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem;">Clear jar tallies mean zero billing discrepancies.</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem;">Monthly statements are fully itemized and easy to check.</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem;">Request route supervisors to share your recent jar log summaries anytime.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px;">
+                        <span class="status-tag" style="background: rgba(100,116,139,0.1); color: #64748b; font-weight: 600;">📱 Online Dashboard (Coming Soon)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bulk Orders & Corporate Services -->
+            <div class="glass-panel" style="padding: 40px; margin-bottom: 60px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(13, 148, 136, 0.08)); border: 1px solid rgba(2, 132, 199, 0.25);">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--primary-dark); margin-bottom: 12px;">Bulk Orders & Corporate Services</h3>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-main); margin-bottom: 20px; max-width: 800px;">
+                        Housing societies, apartment complexes, major corporate offices, clinics, and event venues can enjoy fully customized delivery cycles and dedicated time slots. We plan routes and jar inventory in advance to ensure your staff or families never face last-minute shortages.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 600; color: var(--primary-dark);">
+                            🛡️ Highly Reliable Supply
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 600; color: var(--primary-dark);">
+                            📊 Clear Container Attendance Logs
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 600; color: var(--primary-dark);">
+                            👤 Single Route Manager Point of Contact
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn-primary" onclick="switchContactForm('booking'); navigateTo('contact');" style="white-space: nowrap;">
+                        Request Corporate Quote
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ABOUT US PAGE -->
+        <section id="about-view" class="page-view">
+            <!-- About Page Hero Banner -->
+            <div class="hero-wrapper glass-panel" style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(13, 148, 136, 0.05), rgba(2, 132, 199, 0.05)); border: 1px solid rgba(255, 255, 255, 0.6);">
+                <div class="hero-text" style="grid-column: span 2; text-align: center; align-items: center; gap: 16px;">
+                    <img src="assets/logo.png" alt="Shri Jal Dhara Logo" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); margin-bottom: 8px;">
+                    <div class="hero-badge" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);">
+                        <span class="dot" style="background: var(--primary-light); box-shadow: 0 0 8px var(--primary-light);"></span>
+                        About Shri Jal Dhara
+                    </div>
+                    <h1 style="font-size: 3rem;">Pure water, <span>clear records</span>, honest service</h1>
+                    <p class="hero-sub" style="max-width: 800px; font-size: 1.15rem; line-height: 1.6;">Shri Jal Dhara is a bottled water supplier based in Sanchi, Madhya Pradesh. We run a 2000 LPH RO + UV plant and deliver 20L jars and campers to homes, housing societies, offices, and events. Our goal is simple: give you safe drinking water on time, with clear jar tracking and friendly support.</p>
+                </div>
+            </div>
+
+            <!-- Our Story -->
+            <div class="split-section glass-panel" style="margin-bottom: 48px;">
+                <div class="split-content">
+                    <h2>How We Started</h2>
+                    <p>Shri Jal Dhara started as a local water jar supplier. We saw daily issues with unclear quality and irregular delivery across our neighborhood.</p>
+                    <p>Established on March 16, 2021, Shri Jal Dhara has become synonymous with purity. For the past 5 years, we have been continuously supplying high-quality drinking water to the region through our 2000 LPH plant.</p>
+                    <p>Today, we serve homes, offices, and small businesses with a simple, transparent system that puts purity first and keeps water delivery reliable.</p>
+                    
+                    <div style="margin-top: 20px; padding: 16px; background: rgba(13, 148, 136, 0.06); border-left: 4px solid var(--accent); border-radius: 8px; font-size: 0.95rem; line-height: 1.55;">
+                        <strong style="color: var(--accent); display: block; margin-bottom: 4px;">🌟 Special Service: Dedication in the Corona Era</strong>
+                        Since our journey began on March 16, 2021, we have not given up even in the face of the daunting challenges of the Corona pandemic. Despite the lockdown and restrictions, we ensured the timely availability of pure drinking water in the area while adhering to strict safety standards. Serving society during this time of crisis is our greatest achievement and a matter of pride.
+                    </div>
+                </div>
+                <div class="split-media" style="border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
+                    <img src="assets/plant_operator.jpg" alt="Shri Jal Dhara story and RO UV plant operations MP" style="width: 100%; height: 100%; object-fit: contain; background: rgba(2, 132, 199, 0.03); border-radius: 16px;">
+                </div>
+            </div>
+
+            <!-- Our Mission & Promise -->
+            <div class="split-section glass-panel" style="margin-bottom: 48px;">
+                <div class="split-media">
+                    <img src="assets/delivery_man.png" alt="Shri Jal Dhara mission purity standards Sanchi">
+                </div>
+                <div class="split-content">
+                    <h2>Our Mission</h2>
+                    <p>Our mission is to make safe drinking water simple for every home, housing society, and office we serve. You should not have to think about jar counts, missed deliveries, or unclear bills.</p>
+                    
+                    <h4 style="margin-top: 10px; color: var(--accent);">Our Promise to You:</h4>
+                    <ul class="support-checklist" style="margin: 0; padding-top: 8px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 1rem;">We will focus on water purity and plant hygiene.</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 1rem;">We will keep your jar and container records clear.</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 1rem;">We will listen to your feedback and fix issues fast.</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-size: 1rem;">We will build long-term, honest relationships.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- How We Work every day -->
+            <div class="section-intro" style="margin-top: 60px; margin-bottom: 30px;">
+                <h2>How We Work Every Day</h2>
+                <p>We combine steady plant controls with fixed scheduling routines to keep our water safe and our deliveries punctual.</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 48px;">
+                <!-- Block 1: Plant operations -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <div class="card-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.25 0h8.25m-8.25 0a8.25 8.25 0 0116.5 0z"/></svg>
+                    </div>
+                    <h4 style="font-size: 1.25rem; color: var(--text-main);">Plant Operations</h4>
+                    <p style="font-size: 0.95rem;">Our 2000 LPH RO + UV plant runs with regular checks for TDS and pH. We clean and maintain filters and tanks on a fixed schedule so your water stays safe and steady in quality.</p>
+                </div>
+
+                <!-- Block 2: Route planning -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <div class="card-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8m-9 3h12a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h4 style="font-size: 1.25rem; color: var(--text-main);">Route Planning</h4>
+                    <p style="font-size: 0.95rem;">We group customers into routes based on area and timing. This helps our delivery team reach you at roughly the same time on each visit, and reduces missed or late deliveries.</p>
+                </div>
+
+                <!-- Block 3: Jar and container tracking -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <div class="card-icon" style="background: rgba(3, 105, 161, 0.1); color: var(--primary-dark);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                    </div>
+                    <h4 style="font-size: 1.25rem; color: var(--text-main);">Jar & Container Tracking</h4>
+                    <p style="font-size: 0.95rem;">We treat each jar like an item in inventory. On every visit, we mark jars delivered and jars taken back. This “attendance-style” system keeps your counts and our counts aligned.</p>
+                </div>
+
+                <!-- Block 4: Support and follow-up -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px;">
+                    <div class="card-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent-light);">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785 5.969 5.969 0 001.928-.477c.463-.19.982-.124 1.417.185A8.835 8.835 0 0012 20.25z"/></svg>
+                    </div>
+                    <h4 style="font-size: 1.25rem; color: var(--text-main);">Support & Follow-Up</h4>
+                    <p style="font-size: 0.95rem;">When you call or message us, we log your request or complaint, assign it to the right person, and follow up until it is closed. We believe clear communication is as important as clean water.</p>
+                </div>
+            </div>
+
+            <!-- Who We Serve -->
+            <div class="split-section glass-panel" style="margin-bottom: 48px;">
+                <div class="split-content">
+                    <h2>Who We Serve</h2>
+                    <p>We support a mix of homes, housing societies, offices, shops, and event organizers in and around Sanchi and Salamatpur. Whether you need 2 jars a week or 200 jars a day, we plan a simple, clear system for you.</p>
+                    
+                    <ul class="support-checklist" style="margin: 0; padding-top: 8px;">
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-weight: 500;">Individual homes and families</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-weight: 500;">Small and large housing societies</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-weight: 500;">Offices, clinics, showrooms, and local shops</p>
+                        </li>
+                        <li class="support-checklist-item">
+                            <div class="check-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                            <p style="font-weight: 500;">Event planners, weddings, and community organizers</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="split-media">
+                    <img src="assets/cart_right.png" alt="Locality coverage Sanchi Salamatpur homes offices MP">
+                </div>
+            </div>
+
+            <!-- Our Values -->
+            <div class="section-intro" style="margin-bottom: 30px;">
+                <h2>What We Believe In</h2>
+                <p>Our core operating values guide how we clean, track, and deliver your water every single day.</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 48px;">
+                <!-- Value 1: Purity -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px; border-left: 4px solid var(--primary);">
+                    <h4 style="font-size: 1.2rem; color: var(--primary);">Value 1 – Purity</h4>
+                    <p style="font-size: 0.95rem;">We believe drinking water must be safe first. That is why we invest in multi-stage RO + UV treatment, regular laboratory quality checks, and food-grade clean jars.</p>
+                </div>
+
+                <!-- Value 2: Clarity -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px; border-left: 4px solid var(--accent);">
+                    <h4 style="font-size: 1.2rem; color: var(--accent);">Value 2 – Clarity</h4>
+                    <p style="font-size: 0.95rem;">We believe in clear numbers and clear words. Jar counts, route schedules, and monthly billing cards should be completely easy to understand.</p>
+                </div>
+
+                <!-- Value 3: Reliability -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px; border-left: 4px solid var(--primary-dark);">
+                    <h4 style="font-size: 1.2rem; color: var(--primary-dark);">Value 3 – Reliability</h4>
+                    <p style="font-size: 0.95rem;">We believe you should not have to chase your water supplier. We work hard to keep our delivery truck timings, route cycles, and dispatch promises.</p>
+                </div>
+
+                <!-- Value 4: Respect -->
+                <div class="card glass-panel" style="padding: 24px; gap: 10px; border-left: 4px solid var(--accent-light);">
+                    <h4 style="font-size: 1.2rem; color: var(--accent-light);">Value 4 – Respect</h4>
+                    <p style="font-size: 0.95rem;">We respect your time, your money, and your trust. We also respect our delivery team and plant operators, who make this local water service possible.</p>
+                </div>
+            </div>
+
+            <!-- Meet Our Team -->
+            <div class="split-section glass-panel" style="margin-bottom: 48px;">
+                <div class="split-content" style="grid-column: span 2;">
+                    <h2>The People Behind the Service</h2>
+                    <p style="margin-bottom: 20px;">Our team includes plant operators, delivery staff, route planners, and support executives. Many of them live directly in the same Sanchi and Salamatpur areas we serve, so they understand local building rules and neighborhood routes very well.</p>
+                    
+                    <div class="grid-2" style="margin-bottom: 0; gap: 20px;">
+                        <div style="background: rgba(255,255,255,0.4); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.6);">
+                            <h5 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 6px;">⚙️ Trained Plant Operators</h5>
+                            <p style="font-size: 0.9rem; margin: 0;">Professionals who closely watch water quality, filter membrane sanitization, and safety.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.4); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.6);">
+                            <h5 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 6px;">🚚 Friendly Route Delivery Staff</h5>
+                            <p style="font-size: 0.9rem; margin: 0;">Helpers who know your area, local landmarks, and society rules perfectly.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.4); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.6);">
+                            <h5 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 6px;">📊 Back-Office Administration</h5>
+                            <p style="font-size: 0.9rem; margin: 0;">Team members who manage daily route rosters, ledger books, and jar records.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.4); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.6);">
+                            <h5 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 6px;">📞 Helpful Customer Support</h5>
+                            <p style="font-size: 0.9rem; margin: 0;">Supervisors who listen, resolve billing questions, and close complaints with care.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Operations & Team Gallery -->
+            <div class="section-intro" style="margin-top: 40px; margin-bottom: 24px;">
+                <h2>Our Operations & Team in Action</h2>
+                <p>A look at our plant operations, delivery fleet, and dedicated team serving Sanchi and Salamatpur daily.</p>
+            </div>
+
+            <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 48px;">
+                <!-- Gallery Item 1: Plant Operations -->
+                <div class="card glass-panel" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="width: 100%; height: 260px; overflow: hidden; position: relative;">
+                        <img src="assets/plant_operator.jpg" alt="Shri Jal Dhara RO UV Plant Operations" style="width: 100%; height: 100%; object-fit: contain; background: rgba(2, 132, 199, 0.03);">
+                    </div>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h4 style="font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 6px;">RO & UV Plant Facility</h4>
+                            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-muted); margin: 0;">Our standard 2000 LPH filtration facility overseen by trained plant operators to ensure stable TDS and pH parameters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2: Delivery Fleet Loading -->
+                <div class="card glass-panel" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="width: 100%; height: 260px; overflow: hidden; position: relative;">
+                        <img src="assets/delivery_staff_van.jpg" alt="Shri Jal Dhara Delivery Fleet Loading" style="width: 100%; height: 100%; object-fit: contain; background: rgba(2, 132, 199, 0.03);">
+                    </div>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h4 style="font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 6px;">Efficient Delivery Loading</h4>
+                            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-muted); margin: 0;">Our delivery professionals packing sealed 20L jars onto SJD-branded transport vans to start their morning routes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3: Fleet Delivery Coordinator -->
+                <div class="card glass-panel" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="width: 100%; height: 260px; overflow: hidden; position: relative;">
+                        <img src="assets/delivery_coordinator_truck.jpg" alt="Shri Jal Dhara Delivery Coordinator and Tata Ace Truck" style="width: 100%; height: 100%; object-fit: contain; background: rgba(2, 132, 199, 0.03);">
+                    </div>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h4 style="font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 6px;">Daily Route Distribution</h4>
+                            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-muted); margin: 0;">Dedicated coordinators dispatching Tata Ace cargo trucks to housing societies and corporate showrooms across the district.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Looking Ahead -->
+            <div class="glass-panel" style="padding: 40px; margin-bottom: 60px; text-align: center; background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(2, 132, 199, 0.08)); border: 1px solid rgba(13, 148, 136, 0.25);">
+                <h2>Our Plans for the Future</h2>
+                <p style="max-width: 800px; margin: 12px auto 24px auto; line-height: 1.6;">We are always working to make our water service smoother. This includes better delivery route planning, faster complaint resolution, and smarter tools to track jars and accounts. Our primary aim is to become the most trusted water delivery partner in the Sanchi–Salamatpur region.</p>
+                
+                <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-main); margin-bottom: 24px;">If you would like to join us as a customer or partner, we would be happy to talk!</p>
+                
+                <button class="btn-primary" onclick="navigateTo('contact')" style="display: inline-flex; justify-content: center; margin: 0 auto;">
+                    Connect With Us
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- CAREERS PAGE -->
+        <section id="careers-view" class="page-view">
+            <!-- Hero / Intro Section -->
+            <div class="hero-wrapper glass-panel" style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(255, 255, 255, 0.6);">
+                <div class="hero-text" style="grid-column: span 2; text-align: center; align-items: center; gap: 16px;">
+                    <img src="assets/logo.png" alt="Shri Jal Dhara Logo" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); margin-bottom: 8px;">
+                    <div class="hero-badge" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);">
+                        <span class="dot" style="background: var(--accent-light); box-shadow: 0 0 8px var(--accent-light);"></span>
+                        Careers at Shri Jal Dhara
+                    </div>
+                    <h1 style="font-size: 3rem;">Join the team that keeps our <span>city’s water flowing</span></h1>
+                    <p class="hero-sub" style="max-width: 800px; font-size: 1.15rem; line-height: 1.6;">Shri Jal Dhara delivers safe drinking water to homes, societies, offices, and events every day. Our work is simple but important. If you are honest, hard-working, and like to serve people, we would love to hear from you.</p>
+                </div>
+            </div>
+
+            <!-- Why Work With Us & Who Fits Well (Split Panel) -->
+            <div class="grid-2" style="margin-bottom: 48px; gap: 32px;">
+                <!-- Card 1: Why Work With Us -->
+                <div class="card glass-panel" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 16px;">Why work with Shri Jal Dhara?</h3>
+                        <ul class="support-checklist" style="margin: 0; gap: 12px;">
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Stable work with regular routes and timings</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Respectful, family-like work culture</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Training on plant, delivery, and safety</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Fair pay and clear records of your work</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Chance to grow into new roles over time</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 24px; font-weight: 600; font-style: italic; color: var(--accent); border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px;">We know our service is only as strong as our team.</p>
+                </div>
+
+                <!-- Card 2: Who We're Looking For -->
+                <div class="card glass-panel" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 16px;">Who fits well in our team</h3>
+                        <ul class="support-checklist" style="margin: 0; gap: 12px;">
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Honest and on-time</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Ready to learn and follow systems</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Respectful to customers and co-workers</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Careful with jars, vehicles, and equipment</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 1rem; color: var(--text-main);">Able to work in a team and support others</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 24px; font-weight: 600; color: var(--primary); border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px;">A shared dedication to safe, reliable water.</p>
+                </div>
+            </div>
+
+            <!-- Types of Roles We Hire For -->
+            <div style="margin-bottom: 48px;">
+                <h3 style="font-size: 1.8rem; text-align: center; color: var(--primary-dark); margin-bottom: 24px;">Types of roles we hire for</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                    <!-- Role 1: Delivery Team -->
+                    <div class="card glass-panel" style="padding: 24px; border-left: 4px solid var(--primary);">
+                        <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            🚚 Delivery Team
+                        </h4>
+                        <p style="font-size: 0.95rem; line-height: 1.5; margin: 0;">You handle jar and camper delivery on fixed routes. You meet customers every day, collect empty jars, and keep counts clear. This role is good if you know local areas well and like outdoor work.</p>
+                    </div>
+
+                    <!-- Role 2: Plant Operations -->
+                    <div class="card glass-panel" style="padding: 24px; border-left: 4px solid var(--accent);">
+                        <h4 style="font-size: 1.25rem; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            ⚙️ Plant Operations
+                        </h4>
+                        <p style="font-size: 0.95rem; line-height: 1.5; margin: 0;">You help run the 2000 LPH RO + UV plant. You learn how to check TDS and pH, clean filters, and keep jars and campers safe and ready.</p>
+                    </div>
+
+                    <!-- Role 3: Support & Office Team -->
+                    <div class="card glass-panel" style="padding: 24px; border-left: 4px solid var(--primary-dark);">
+                        <h4 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            📞 Support & Office Team
+                        </h4>
+                        <p style="font-size: 0.95rem; line-height: 1.5; margin: 0;">You help with calls, WhatsApp messages, jar records, billing, and route planning. This role is good if you are organized and like talking to people.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Openings & Equal Opportunity (Split Panel) -->
+            <div class="grid-2" style="margin-bottom: 48px; gap: 32px;">
+                <!-- Current Openings Card -->
+                <div class="card glass-panel" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 12px;">Current openings</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">We often look for:</p>
+                        
+                        <ul class="support-checklist" style="margin: 0 0 20px 0; gap: 10px;">
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 600;">Delivery staff (two-wheeler or three-wheeler preferred)</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 600;">Plant helpers and operators</p>
+                            </li>
+                            <li class="support-checklist-item">
+                                <div class="check-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 600;">Office and support staff</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(13, 148, 136, 0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent); font-size: 0.9rem; line-height: 1.45;">
+                        Even if there is no active opening listed, you can still send your CV. We keep it on file and contact you when a role opens.
+                    </div>
+                </div>
+
+                <!-- Everyone Is Welcome Card (Equal Opportunity) -->
+                <div class="card glass-panel" style="padding: 32px; display: flex; flex-direction: column; justify-content: center; text-align: center; background: linear-gradient(135deg, rgba(13, 148, 136, 0.02), rgba(2, 132, 199, 0.04)); border: 1px solid rgba(13, 148, 136, 0.2);">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🤝</div>
+                    <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 12px;">Everyone is welcome</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main); margin: 0 auto; max-width: 440px;">
+                        We welcome applicants from all backgrounds. We do not judge by caste, religion, gender, or age (within legal work limits). What matters to us is your honesty, effort, and respect for others.
+                    </p>
+                </div>
+            </div>
+
+            <!-- How To Apply & Interactive Application Form -->
+            <div class="grid-2" style="margin-bottom: 60px; gap: 32px; align-items: start;">
+                <!-- How to Apply Card -->
+                <div class="card glass-panel" style="padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+                    <h3 style="font-size: 1.5rem; color: var(--primary-dark);">How to apply</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.5;">To apply, please send your CV or a simple work profile with your details using the form on the right, or via email:</p>
+                    
+                    <div style="background: rgba(2, 132, 199, 0.05); padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px;">
+                        <p style="font-size: 1rem; font-weight: 600; color: var(--primary-dark); margin: 0;">📧 Email CV Submissions:</p>
+                        <p style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0;">
+                            <a href="mailto:admin.shrijaldhara@gmail.com" style="color: var(--primary-dark); text-decoration: underline;">admin.shrijaldhara@gmail.com</a>
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;"><strong>Subject line:</strong> Job Application – [Role Name]</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;"><strong>Include:</strong> Name, mobile number, address, past work experience, and which role you want.</p>
+                    </div>
+
+                    <div style="background: rgba(13, 148, 136, 0.05); padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <p style="font-size: 1rem; font-weight: 600; color: var(--accent); margin: 0;">📞 Job Query Helpline:</p>
+                        <p style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0;">Phone: +91 91833 55900</p>
+                    </div>
+
+                    <p style="font-size: 0.85rem; font-style: italic; color: var(--text-muted); border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px; margin: 0;">
+                        You can also mention your preferred area and shift timing.
+                    </p>
+                </div>
+
+                <!-- Submit Your Application Form -->
+                <div id="careerFormPanel" class="careers-form-panel glass-panel" style="padding: 32px; border-radius: var(--border-radius); position: relative;">
+                    <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 8px;">Submit Your Application</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">Fill out the form below. We will get in touch with you within 2 days!</p>
+                    
+                    <form id="careerForm" onsubmit="handleCareerSubmit(event)" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="calc-grid" style="gap: 16px;">
+                            <div class="form-group">
+                                <label for="carName">Your Full Name:</label>
+                                <input type="text" id="carName" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="carPhone">Phone Number:</label>
+                                <input type="tel" id="carPhone" required placeholder="10-digit mobile number">
+                            </div>
+                        </div>
+
+                        <div class="calc-grid" style="gap: 16px;">
+                            <div class="form-group">
+                                <label for="carJob">Select Position:</label>
+                                <select id="carJob" required>
+                                    <option value="" disabled selected>-- Choose Job Position --</option>
+                                    <option value="Delivery Team">Delivery Team (outdoor fixed routes)</option>
+                                    <option value="Plant Operations">Plant Operations (RO + UV helper)</option>
+                                    <option value="Support & Office Team">Support & Office Team (admin / support)</option>
+                                    <option value="Other">Other / General Application</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="carLocation">Where do you live?:</label>
+                                <input type="text" id="carLocation" required placeholder="e.g. Sanchi, Salamatpur, Raisen">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="carExperience">Work Experience or Background details:</label>
+                            <textarea id="carExperience" rows="3" placeholder="Tell us if you drove commercial vehicles or worked at any plant before..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload CV / Bio-Data (Optional):</label>
+                            <div class="file-dropzone" onclick="document.getElementById('carFile').click()" style="border: 2px dashed rgba(2, 132, 199, 0.3); padding: 20px; border-radius: 8px; text-align: center; cursor: pointer; transition: var(--transition); background: rgba(255, 255, 255, 0.45);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 32px; height: 32px; margin: 0 auto 8px auto; color: var(--primary);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
+                                <p style="font-size: 0.95rem; font-weight: 500; margin: 0;">Click here to choose file from your device</p>
+                                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 4px 0 0 0;">PDF, JPG, PNG, or DOCX formats accepted.</p>
+                                <p class="filename-display" id="carFilenameDisplay" style="display: none; font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: 8px;"></p>
+                                <input type="file" id="carFile" onchange="handleFileSelected()" style="display: none;">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 12px;">Submit Application</button>
+                    </form>
+
+                    <!-- Success Screen Overlay -->
+                    <div class="success-overlay" id="careerSuccess" style="border-radius: var(--border-radius);">
+                        <div class="success-circle" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);">
+                            <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                        <h3 style="color: var(--primary-dark); font-size: 1.5rem; margin-top: 16px;">Application Submitted!</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.5; margin: 12px 0 20px 0;">Thank you for applying. Our Sanchi office team will call you within 2 working days. You can also contact us directly at +91 91833 55900.</p>
+                        <button class="btn-secondary" onclick="resetCareerForm()" style="padding: 10px 24px; border-radius: 30px;">Submit Another Application</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CONTACT PAGE -->
+        <section id="contact-view" class="page-view">
+            <!-- Hero / Intro Section -->
+            <div class="hero-wrapper glass-panel" style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(13, 148, 136, 0.05)); border: 1px solid rgba(255, 255, 255, 0.6);">
+                <div class="hero-text" style="grid-column: span 2; text-align: center; align-items: center; gap: 16px;">
+                    <img src="assets/logo.png" alt="Shri Jal Dhara Logo" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); margin-bottom: 8px;">
+                    <div class="hero-badge" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);">
+                        <span class="dot" style="background: var(--accent-light); box-shadow: 0 0 8px var(--accent-light);"></span>
+                        Contact Shri Jal Dhara
+                    </div>
+                    <h1 style="font-size: 3rem;">Set up delivery, <span>ask a question</span>, or get support</h1>
+                    <p class="hero-sub" style="max-width: 800px; font-size: 1.15rem; line-height: 1.6;">We are here to help with new water jar bookings, route and timing questions, jar count issues, and any feedback. Use the form or the details below and our team will get back to you as soon as possible.</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Jar Refill Tracker Calculator -->
+            <div class="calculator-panel glass-panel" style="margin-bottom: 48px;">
+                <h3>Daily Refill & Cost Estimator</h3>
+                <p style="margin-bottom: 20px;">Use our simple daily tool to estimate your monthly water jar cost and manage returned jar balances.</p>
+                
+                <div class="calc-grid">
+                    <div class="form-group">
+                        <label for="calcJars">Jars needed per delivery?:</label>
+                        <input type="number" id="calcJars" value="1" min="1" onchange="runCostCalculator()">
+                    </div>
+                    <div class="form-group">
+                        <label for="calcFrequency">Delivery Frequency:</label>
+                        <select id="calcFrequency" onchange="runCostCalculator()">
+                            <option value="daily">Every Single Day (30 days/mo)</option>
+                            <option value="alternate">Alternate Days (15 days/mo)</option>
+                            <option value="weekly">Twice a Week (8 days/mo)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="calcRate">Jar Supply Type / Rate:</label>
+                        <select id="calcRate" onchange="runCostCalculator()">
+                            <option value="camper">20L Insulated Camper (₹40 per camper)</option>
+                            <option value="standard" selected>20L Standard Bubble Jar (₹30 per jar)</option>
+                            <option value="bulk">Bulk / Society Special (₹25 per jar)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="calcReturned">Estimated Empty Jars Returned:</label>
+                        <input type="number" id="calcReturned" value="0" min="0" onchange="runCostCalculator()">
+                    </div>
+                </div>
+
+                <div class="calc-output-box">
+                    <div class="calc-row">
+                        <span>Total Jars Supplied / Month:</span>
+                        <strong id="calcTotalJars">30 Jars</strong>
+                    </div>
+                    <div class="calc-row">
+                        <span>Missing / Unreturned Jars Tally:</span>
+                        <strong id="calcMissingTally" style="color: var(--accent);">0 Jars (Clean Account)</strong>
+                    </div>
+                    <div class="calc-row total-row">
+                        <span>Estimated Cost / Month:</span>
+                        <span id="calcTotalCost">₹900.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-Column Contact Layout -->
+            <div class="contact-layout">
+                <!-- Left Column: Quick reasons, direct numbers, address & map -->
+                <div class="contact-info-panel" style="display: flex; flex-direction: column; gap: 24px;">
+                    
+                    <!-- Quick Reason Selector Card -->
+                    <div class="card glass-panel" style="padding: 24px; gap: 12px;">
+                        <h4 style="font-size: 1.25rem; color: var(--text-main);">What do you want to do?</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px;">Click any quick action below to pre-fill the form instantly:</p>
+                        
+                        <div class="support-checklist" style="margin: 0; gap: 10px;">
+                            <div class="support-checklist-item" onclick="document.getElementById('cNeed').value = 'Home'; document.getElementById('cNeed').dispatchEvent(new Event('change'));" style="cursor: pointer; padding: 6px 10px; background: rgba(2, 132, 199, 0.05); border-radius: 6px; transition: var(--transition);">
+                                <div class="check-icon" style="width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 500; color: var(--primary-dark);">Start daily jar delivery for my home</p>
+                            </div>
+                            <div class="support-checklist-item" onclick="document.getElementById('cNeed').value = 'Society'; document.getElementById('cNeed').dispatchEvent(new Event('change'));" style="cursor: pointer; padding: 6px 10px; background: rgba(2, 132, 199, 0.05); border-radius: 6px; transition: var(--transition);">
+                                <div class="check-icon" style="width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 500; color: var(--primary-dark);">Set up supply for my housing society</p>
+                            </div>
+                            <div class="support-checklist-item" onclick="document.getElementById('cNeed').value = 'Office'; document.getElementById('cNeed').dispatchEvent(new Event('change'));" style="cursor: pointer; padding: 6px 10px; background: rgba(2, 132, 199, 0.05); border-radius: 6px; transition: var(--transition);">
+                                <div class="check-icon" style="width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 500; color: var(--primary-dark);">Plan jars for my office or shop</p>
+                            </div>
+                            <div class="support-checklist-item" onclick="document.getElementById('cNeed').value = 'Event'; document.getElementById('cNeed').dispatchEvent(new Event('change'));" style="cursor: pointer; padding: 6px 10px; background: rgba(2, 132, 199, 0.05); border-radius: 6px; transition: var(--transition);">
+                                <div class="check-icon" style="width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 500; color: var(--primary-dark);">Book water for an event or function</p>
+                            </div>
+                            <div class="support-checklist-item" onclick="document.getElementById('cNeed').value = 'Support'; document.getElementById('cNeed').dispatchEvent(new Event('change'));" style="cursor: pointer; padding: 6px 10px; background: rgba(2, 132, 199, 0.05); border-radius: 6px; transition: var(--transition);">
+                                <div class="check-icon" style="width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 500; color: var(--primary-dark);">Fix a jar count or billing issue</p>
+                            </div>
+                            <div class="support-checklist-item" onclick="document.getElementById('cNeed').value = 'Feedback'; document.getElementById('cNeed').dispatchEvent(new Event('change'));" style="cursor: pointer; padding: 6px 10px; background: rgba(2, 132, 199, 0.05); border-radius: 6px; transition: var(--transition);">
+                                <div class="check-icon" style="width:18px; height:18px;"><svg viewBox="0 0 24 24" stroke-width="3" fill="none" stroke="currentColor"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+                                <p style="font-size: 0.95rem; font-weight: 500; color: var(--primary-dark);">Share feedback or a complaint</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call & WhatsApp Details -->
+                    <div class="card glass-panel contact-item-box" style="padding: 24px; gap: 16px;">
+                        <div class="contact-icon" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </div>
+                        <div class="contact-item-info">
+                            <h4 style="font-size: 1.15rem; margin-bottom: 4px;">Call or WhatsApp us</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 8px;">Prefer to talk directly? Call or message us and we’ll guide you on jar plans, routes, and pricing.</p>
+                            <p style="font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); margin: 6px 0;">Phone / WhatsApp: +91 91833 55900</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;">Timings: 8:00 AM to 8:00 PM, all days</p>
+                            <span style="font-size: 0.85rem; font-style: italic; color: var(--accent);">If we miss your call, we will call you back as soon as we can.</span>
+                        </div>
+                    </div>
+
+                    <!-- Email & Support -->
+                    <div class="card glass-panel contact-item-box" style="padding: 24px; gap: 16px;">
+                        <div class="contact-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--primary);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div class="contact-item-info">
+                            <h4 style="font-size: 1.15rem; margin-bottom: 4px;">Email support</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 8px;">For detailed questions, complaints, or sharing documents, you can email us.</p>
+                            <p style="font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); margin: 6px 0;"><a href="mailto:admin.shrijaldhara@gmail.com" class="footer-email">admin.shrijaldhara@gmail.com</a></p>
+                            <span style="font-size: 0.85rem; font-style: italic; color: var(--text-muted);">Please include your name, address, and customer code (if you have one) so we can help faster.</span>
+                        </div>
+                    </div>
+
+                    <!-- Visit or Service Area Info -->
+                    <div class="card glass-panel contact-item-box" style="padding: 24px; gap: 16px;">
+                        <div class="contact-icon" style="background: rgba(3, 105, 161, 0.1); color: var(--primary-dark);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div class="contact-item-info" style="width: 100%;">
+                            <h4 style="font-size: 1.15rem; margin-bottom: 4px;">Our location & service area</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 8px;">We serve Sanchi, Salamatpur, and nearby areas in Raisen district, Madhya Pradesh.</p>
+                            <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 12px;">Address: 78, DR HEADGEWAR COLONY, SANCHI, RAISEN, (MP), 464661</p>
+                            
+                            <!-- Embedded map container -->
+                            <div class="footer-map-container" style="height: 150px; margin-bottom: 8px; border-radius: 8px;">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14646.611681289658!2d77.7259163!3d23.4910688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c11f4347715b7%3A0xc39f99df8996b00b!2sSanchi%2C%20Madhya%20Pradesh%20464661!5e0!3m2!1sen!2sin!4v1715962451000!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <span style="font-size: 0.85rem; font-style: italic; color: var(--text-muted);">Share your full address and we will confirm if we can deliver to your area.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Premium Contact Form -->
+                <div class="card glass-panel form-card" style="padding: 32px; display: flex; flex-direction: column; justify-content: flex-start;">
+                    <div style="margin-bottom: 24px;">
+                        <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 6px;">Send us a message</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Tell us what you need, and share your address and phone number so we can reach you with the right plan.</p>
+                    </div>
+
+                    <!-- Unified Form -->
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="form-group">
+                            <label for="cName" style="font-weight: 500;">Full Name:</label>
+                            <input type="text" id="cName" required placeholder="Enter your full name">
+                        </div>
+
+                        <div class="calc-grid" style="gap: 16px;">
+                            <div class="form-group">
+                                <label for="cPhone" style="font-weight: 500;">Mobile Number:</label>
+                                <input type="tel" id="cPhone" required placeholder="10-digit mobile number">
+                            </div>
+                            <div class="form-group">
+                                <label for="cEmail" style="font-weight: 500;">Email (optional):</label>
+                                <input type="email" id="cEmail" placeholder="Enter your email address">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cNeed" style="font-weight: 500;">Type of Need:</label>
+                            <select id="cNeed" required>
+                                <option value="" disabled selected>-- Select Type of Need --</option>
+                                <option value="Home">Home Delivery (Daily 20L Standard Jars)</option>
+                                <option value="Society">Housing Society (Bulk & Schedule Setup)</option>
+                                <option value="Office">Office or Shop Plan (Insulated Campers / Jars)</option>
+                                <option value="Event">Event or Function Water Setup</option>
+                                <option value="Support">Support Request (Jar count / billing issue)</option>
+                                <option value="Feedback">Share Feedback or a Complaint</option>
+                                <option value="Other">Other Query</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cAddress" style="font-weight: 500;">Full Address (with area / landmark):</label>
+                            <textarea id="cAddress" rows="2" required placeholder="Enter delivery location details (e.g. Near Stupa Road, Salamatpur Market, Raisen MP)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cDetails" style="font-weight: 500;">Message or Details:</label>
+                            <textarea id="cDetails" rows="3" required placeholder="Describe details of your request (e.g., number of jars, support issue, timing details...)"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 12px; margin-top: 10px;">
+                            Submit
+                        </button>
+                    </form>
+
+                    <!-- Success Screen Overlay -->
+                    <div class="success-overlay" id="contactSuccess" style="border-radius: var(--border-radius);">
+                        <div class="success-circle" style="background: rgba(13, 148, 136, 0.1); color: var(--accent);">
+                            <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                        <h3 id="contactSuccessTitle" style="color: var(--primary-dark); font-size: 1.5rem; margin-top: 16px;">Message Sent Successfully!</h3>
+                        <p id="contactSuccessText" style="color: var(--text-muted); font-size: 1rem; line-height: 1.5; margin: 12px 0 20px 0;">Our route coordinators are checking your location and details now.</p>
+                        <button class="btn-secondary" onclick="resetContactForm()" style="padding: 10px 24px; border-radius: 30px;">Send Another Message</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN PORTAL VIEW -->
+        <section id="admin-view" class="page-view">
+            <!-- Admin Login Sub-view -->
+            <div id="admin-login-subview" class="admin-login-container glass-panel">
+                <div class="login-header">
+                    <img src="assets/logo.png" alt="Shri Jal Dhara Logo">
+                    <h2>Admin Portal Login</h2>
+                    <p>Enter your credentials to manage SJD operations</p>
+                </div>
+                <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="form-group">
+                        <label for="adminUser">Username:</label>
+                        <input type="text" id="adminUser" required placeholder="Enter admin username" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPass">Password:</label>
+                        <input type="password" id="adminPass" required placeholder="Enter admin password" autocomplete="current-password">
+                    </div>
+                    <div id="adminLoginError" class="login-error-message" style="display: none;"></div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">Login securely</button>
+                </form>
+            </div>
+
+            <!-- Admin Panel Dashboard Sub-view -->
+            <div id="admin-panel-subview" class="admin-panel-layout glass-panel" style="display: none; width: 100%;">
+                <!-- Sidebar -->
+                <aside class="admin-sidebar">
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <div class="admin-profile">
+                            <img src="assets/logo.png" alt="SJD Admin">
+                            <div>
+                                <h4 style="margin: 0; font-size: 1rem;">SJD Admin</h4>
+                                <span>Authorized Session</span>
+                            </div>
+                        </div>
+                        <nav class="admin-sidebar-nav">
+                            <button class="sidebar-tab-btn active" id="btn-tab-dashboard" onclick="switchAdminTab('dashboard')">
+                                📊 Dashboard Overview
+                            </button>
+                            <button class="sidebar-tab-btn" id="btn-tab-enquiries" onclick="switchAdminTab('enquiries')">
+                                ✉️ Enquiries & Bookings
+                            </button>
+                            <button class="sidebar-tab-btn" id="btn-tab-careers" onclick="switchAdminTab('careers')">
+                                💼 Job Applications
+                            </button>
+                            <button class="sidebar-tab-btn" id="btn-tab-rates" onclick="switchAdminTab('rates')">
+                                💰 Product Rates Sheet
+                            </button>
+                            <button class="sidebar-tab-btn" id="btn-tab-routes" onclick="switchAdminTab('routes')">
+                                🚚 Delivery Routes
+                            </button>
+                            <button class="sidebar-tab-btn" id="btn-tab-settings" onclick="switchAdminTab('settings')">
+                                ⚙️ Security & Settings
+                            </button>
+                        </nav>
+                    </div>
+                    <button class="logout-btn" onclick="handleAdminLogout()">
+                        🚪 Logout Session
+                    </button>
+                </aside>
+
+                <!-- Content Area -->
+                <div class="admin-content-viewport" style="width: 100%;">
+                    <!-- Tab contents will be dynamically injected here by JS -->
+                    <div id="admin-tab-content"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <div class="footer-container">
+            <!-- Col 1: About Company -->
+            <div class="footer-column">
+                <div class="footer-logo" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="assets/logo.png" alt="Shri Jal Dhara Logo" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(2, 132, 199, 0.2); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <span class="footer-logo-title">Shri Jal Dhara</span>
+                </div>
+                <p class="footer-about">We are the leading 2000 LPH RO + UV purified water supplier in Sanchi and Salamatpur region. We focus on purity, on-time schedules, and completely transparent jar records.</p>
+                <div class="footer-careers">
+                    <strong>Join Our Team:</strong> Send your CV to <a href="mailto:admin.shrijaldhara@gmail.com" class="footer-email">admin.shrijaldhara@gmail.com</a> or call <strong>+91 91833 55900</strong>. We welcome applications from all backgrounds!
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links & Contact -->
+            <div class="footer-column">
+                <h4 style="color: var(--primary-dark); font-size: 1.15rem;">Quick Company Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="event.preventDefault(); navigateTo('about')">About Us</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); navigateTo('services')">Water Supply & Purity</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); navigateTo('contact')">Inventory & Cost Calculator</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); navigateTo('contact', 'support-tab')">Contact Support Helpdesk</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); navigateTo('admin')" style="color: var(--accent); font-weight: bold;">🔒 Admin Portal Login</a></li>
+                </ul>
+
+                <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-top: 10px;">Our Registered Address</h4>
+                <address class="footer-address">
+                    78, DR HEADGEWAR COLONY, <br>
+                    SANCHI, RAISEN, <br>
+                    MADHYA PRADESH (MP), 464661
+                </address>
+            </div>
+
+            <!-- Col 3: Embedded Google Map -->
+            <div class="footer-column">
+                <h4 style="color: var(--primary-dark); font-size: 1.15rem;">Our Plant & Service Region</h4>
+                <div class="footer-map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14646.611681289658!2d77.7259163!3d23.4910688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c11f4347715b7%3A0xc39f99df8996b00b!2sSanchi%2C%20Madhya%20Pradesh%20464661!5e0!3m2!1sen!2sin!4v1715962451000!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span class="copyright">&copy; 2026 Shri Jal Dhara &bull; All Rights Reserved.</span>
+            
+            <div class="social-icons">
+                <!-- Facebook placeholder -->
+                <a href="#" class="social-btn" onclick="event.preventDefault()">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+                </a>
+                <!-- Instagram placeholder -->
+                <a href="#" class="social-btn" onclick="event.preventDefault()">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051c-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <!-- WhatsApp placeholder -->
+                <a href="#" class="social-btn" onclick="event.preventDefault()">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.197 1.449 4.825 1.451 5.436 0 9.859-4.416 9.863-9.852.002-2.634-1.02-5.11-2.885-6.977a9.782 9.782 0 00-6.979-2.881c-5.433 0-9.858 4.417-9.863 9.853-.002 1.706.453 3.37 1.317 4.862L1.87 20.21l4.777-1.056z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
