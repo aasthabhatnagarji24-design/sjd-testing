@@ -557,6 +557,7 @@ function initDatabase() {
             {
                 id: 'CUST-101',
                 name: 'Rahul Verma',
+                username: 'rahul',
                 phone: '9876543222',
                 email: 'rahul.verma@gmail.com',
                 password: 'password123',
@@ -570,6 +571,7 @@ function initDatabase() {
             {
                 id: 'CUST-102',
                 name: 'Priyanka Patel',
+                username: 'priyanka',
                 phone: '9425022334',
                 email: 'priyanka.p@yahoo.com',
                 password: 'password123',
@@ -1451,17 +1453,19 @@ function cancelAdmin2fa() {
    ========================================================== */
 let pendingCredUpdate = null;
 let user2faCode = null;
+let tempLoginUsername = null;
+let userLogin2faCode = null;
 
 function checkCustomerAccess() {
-    const loggedPhone = sessionStorage.getItem('sjd_customer_phone');
+    const loggedUsername = sessionStorage.getItem('sjd_customer_username');
     const loggedOutEl = document.getElementById('user-logged-out-state');
     const loggedInEl = document.getElementById('user-logged-in-state');
 
     if (!loggedOutEl || !loggedInEl) return;
 
-    if (loggedPhone) {
+    if (loggedUsername) {
         const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
-        const customer = customers.find(c => c.phone === loggedPhone);
+        const customer = customers.find(c => c.username === loggedUsername);
 
         if (customer) {
             loggedOutEl.style.display = 'none';
@@ -1500,6 +1504,7 @@ function checkCustomerAccess() {
 function handleCustomerRegister(event) {
     event.preventDefault();
     const nameVal = document.getElementById('regName').value.trim();
+    const usernameVal = document.getElementById('regUser').value.trim().toLowerCase();
     const phoneVal = document.getElementById('regPhone').value.trim();
     const emailVal = document.getElementById('regEmail').value.trim();
     const passVal = document.getElementById('regPass').value.trim();
@@ -1507,6 +1512,18 @@ function handleCustomerRegister(event) {
     const errorEl = document.getElementById('userRegisterError');
 
     const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+
+    if (!/^[a-zA-Z]+$/.test(usernameVal)) {
+        errorEl.textContent = "Username must contain letters only.";
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    if (customers.some(c => c.username === usernameVal)) {
+        errorEl.textContent = "Username is already taken by another account.";
+        errorEl.style.display = 'block';
+        return;
+    }
 
     if (customers.some(c => c.phone === phoneVal)) {
         errorEl.textContent = "Mobile number is already registered for another account.";
@@ -1517,6 +1534,7 @@ function handleCustomerRegister(event) {
     const newCustomer = {
         id: `CUST-${Math.floor(100 + Math.random() * 900)}`,
         name: nameVal,
+        username: usernameVal,
         phone: phoneVal,
         email: emailVal,
         password: passVal,
@@ -1531,21 +1549,28 @@ function handleCustomerRegister(event) {
     customers.push(newCustomer);
     localStorage.setItem('sjd_customers', JSON.stringify(customers));
 
-    sessionStorage.setItem('sjd_customer_phone', phoneVal);
     errorEl.style.display = 'none';
     document.getElementById('userRegisterForm').reset();
-    checkCustomerAccess();
-    alert("Account registered successfully! Welcome to Shri Jal Dhara Portal.");
+    
+    // Auto-trigger 2FA verification code on register
+    tempLoginUsername = usernameVal;
+    userLogin2faCode = Math.floor(100000 + Math.random() * 900000).toString();
+    alert(`[User Portal 2-Step Verification] Registration successful! Your 6-digit verification code is: ${userLogin2faCode}`);
+    
+    document.getElementById('user-logged-out-state').style.display = 'none';
+    document.getElementById('user-login-2fa-subview').style.display = 'block';
+    document.getElementById('userLogin2faCode').value = '';
+    document.getElementById('userLogin2faError').style.display = 'none';
 }
 
 function handleCustomerLogin(event) {
     event.preventDefault();
-    const phoneVal = document.getElementById('loginPhone').value.trim();
+    const userVal = document.getElementById('loginUser').value.trim().toLowerCase();
     const passVal = document.getElementById('loginPass').value.trim();
     const errorEl = document.getElementById('userLoginError');
 
     const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
-    const customer = customers.find(c => c.phone === phoneVal && c.password === passVal);
+    const customer = customers.find(c => c.username === userVal && c.password === passVal);
 
     if (customer) {
         if (customer.status !== 'Active') {
@@ -1553,26 +1578,59 @@ function handleCustomerLogin(event) {
             errorEl.style.display = 'block';
             return;
         }
-        sessionStorage.setItem('sjd_customer_phone', phoneVal);
+        
         errorEl.style.display = 'none';
+        tempLoginUsername = userVal;
+        
+        // Generate 6-digit verification code
+        userLogin2faCode = Math.floor(100000 + Math.random() * 900000).toString();
+        alert(`[User Portal 2-Step Verification] Verification code: ${userLogin2faCode}`);
+
+        document.getElementById('user-logged-out-state').style.display = 'none';
+        document.getElementById('user-login-2fa-subview').style.display = 'block';
+        document.getElementById('userLogin2faCode').value = '';
+        document.getElementById('userLogin2faError').style.display = 'none';
+        
         document.getElementById('userLoginForm').reset();
-        checkCustomerAccess();
     } else {
-        errorEl.textContent = "Incorrect mobile number or password.";
+        errorEl.textContent = "Incorrect username or password.";
         errorEl.style.display = 'block';
     }
 }
 
+function handleCustomer2faVerify(event) {
+    event.preventDefault();
+    const entered = document.getElementById('userLogin2faCode').value.trim();
+    const errorEl = document.getElementById('userLogin2faError');
+
+    if (entered === userLogin2faCode) {
+        sessionStorage.setItem('sjd_customer_username', tempLoginUsername);
+        document.getElementById('user-login-2fa-subview').style.display = 'none';
+        checkCustomerAccess();
+        alert("2-Step Verification successful. Welcome to your portal!");
+    } else {
+        errorEl.textContent = "Incorrect verification pin. Please try again.";
+        errorEl.style.display = 'block';
+    }
+}
+
+function cancelCustomerLogin2fa() {
+    tempLoginUsername = null;
+    userLogin2faCode = null;
+    document.getElementById('user-login-2fa-subview').style.display = 'none';
+    document.getElementById('user-logged-out-state').style.display = 'grid';
+}
+
 function handleCustomerLogout() {
-    sessionStorage.removeItem('sjd_customer_phone');
+    sessionStorage.removeItem('sjd_customer_username');
     checkCustomerAccess();
 }
 
 /* User Profile Update Actions */
 function openEditProfileModal() {
-    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const username = sessionStorage.getItem('sjd_customer_username');
     const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
-    const customer = customers.find(c => c.phone === phone);
+    const customer = customers.find(c => c.username === username);
     if (!customer) return;
 
     document.getElementById('editProfileName').value = customer.name;
@@ -1591,9 +1649,9 @@ function handleProfileUpdateSubmit(event) {
     const emailVal = document.getElementById('editProfileEmail').value.trim();
     const addressVal = document.getElementById('editProfileAddress').value.trim();
 
-    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const username = sessionStorage.getItem('sjd_customer_username');
     const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
-    const index = customers.findIndex(c => c.phone === phone);
+    const index = customers.findIndex(c => c.username === username);
 
     if (index !== -1) {
         customers[index].name = nameVal;
@@ -1608,9 +1666,9 @@ function handleProfileUpdateSubmit(event) {
 }
 
 function requestCustomerRefill() {
-    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const username = sessionStorage.getItem('sjd_customer_username');
     const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
-    const customer = customers.find(c => c.phone === phone);
+    const customer = customers.find(c => c.username === username);
     if (!customer) return;
 
     const enquiries = JSON.parse(localStorage.getItem('sjd_enquiries') || '[]');
@@ -1638,14 +1696,14 @@ function requestCustomerRefill() {
 function initiateChangeCredentials(event) {
     event.preventDefault();
     const curPassVal = document.getElementById('changeCurrentPass').value.trim();
-    const newUserVal = document.getElementById('changeNewUser').value.trim();
+    const newUserVal = document.getElementById('changeNewUser').value.trim().toLowerCase();
     const newPassVal = document.getElementById('changeNewPass').value.trim();
     const confirmPassVal = document.getElementById('changeConfirmPass').value.trim();
     const errorEl = document.getElementById('credentialChangeError');
 
-    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const username = sessionStorage.getItem('sjd_customer_username');
     const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
-    const customer = customers.find(c => c.phone === phone);
+    const customer = customers.find(c => c.username === username);
 
     if (!customer) return;
 
@@ -1661,8 +1719,14 @@ function initiateChangeCredentials(event) {
         return;
     }
 
-    if (newUserVal !== phone && customers.some(c => c.phone === newUserVal)) {
-        errorEl.textContent = "The new mobile number is already registered for another account.";
+    if (!/^[a-zA-Z]+$/.test(newUserVal)) {
+        errorEl.textContent = "New username must contain letters only.";
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    if (newUserVal !== username && customers.some(c => c.username === newUserVal)) {
+        errorEl.textContent = "The new username is already taken.";
         errorEl.style.display = 'block';
         return;
     }
@@ -1670,7 +1734,7 @@ function initiateChangeCredentials(event) {
     errorEl.style.display = 'none';
 
     pendingCredUpdate = {
-        newPhone: newUserVal,
+        newUsername: newUserVal,
         newPass: newPassVal
     };
 
@@ -1694,18 +1758,18 @@ function verifyUser2faCode() {
     const errorEl = document.getElementById('user2faError');
 
     if (entered === user2faCode) {
-        const phone = sessionStorage.getItem('sjd_customer_phone');
+        const username = sessionStorage.getItem('sjd_customer_username');
         const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
-        const index = customers.findIndex(c => c.phone === phone);
+        const index = customers.findIndex(c => c.username === username);
 
         if (index !== -1 && pendingCredUpdate) {
-            customers[index].phone = pendingCredUpdate.newPhone;
+            customers[index].username = pendingCredUpdate.newUsername;
             customers[index].password = pendingCredUpdate.newPass;
             localStorage.setItem('sjd_customers', JSON.stringify(customers));
 
             closeUser2faModal();
             document.getElementById('changeCredentialsForm').reset();
-            sessionStorage.removeItem('sjd_customer_phone');
+            sessionStorage.removeItem('sjd_customer_username');
             checkCustomerAccess();
 
             alert("Username and password updated successfully! Please log in using your new details.");
@@ -2082,6 +2146,10 @@ function renderCustomersTab(container) {
                         <input type="text" id="acName" required placeholder="Enter full name">
                     </div>
                     <div class="form-group">
+                        <label for="acUser">Login Username (Alphabetic):</label>
+                        <input type="text" id="acUser" required placeholder="Letters only (e.g. rahul)" pattern="[a-zA-Z]+" title="Letters only">
+                    </div>
+                    <div class="form-group">
                         <label for="acPhone">Mobile Number:</label>
                         <input type="tel" id="acPhone" required placeholder="10-digit mobile number">
                     </div>
@@ -2117,6 +2185,10 @@ function renderCustomersTab(container) {
                     <div class="form-group">
                         <label for="ecName">Full Name:</label>
                         <input type="text" id="ecName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ecUser">Login Username (Alphabetic):</label>
+                        <input type="text" id="ecUser" required pattern="[a-zA-Z]+" title="Letters only">
                     </div>
                     <div class="form-group">
                         <label for="ecPhone">Mobile Number:</label>
@@ -2185,6 +2257,7 @@ function renderCustomersTab(container) {
                             <td><strong>${c.id}</strong></td>
                             <td>
                                 <div><strong>${c.name}</strong></div>
+                                <div style="font-size: 0.8rem; color: var(--accent); font-weight: 600;">@${c.username}</div>
                                 <div style="font-size: 0.8rem; color: var(--text-muted);">${c.phone}</div>
                                 <div style="font-size: 0.8rem; color: var(--text-muted);">${c.email || 'N/A'}</div>
                             </td>
@@ -2211,6 +2284,7 @@ function renderCustomersTab(container) {
 function addCustomerAdmin(event) {
     event.preventDefault();
     const nameVal = document.getElementById('acName').value.trim();
+    const userVal = document.getElementById('acUser').value.trim().toLowerCase();
     const phoneVal = document.getElementById('acPhone').value.trim();
     const emailVal = document.getElementById('acEmail').value.trim();
     const passVal = document.getElementById('acPass').value.trim();
@@ -2218,6 +2292,16 @@ function addCustomerAdmin(event) {
     const rateVal = document.getElementById('acRate').value;
 
     const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+
+    if (!/^[a-zA-Z]+$/.test(userVal)) {
+        alert("Username must contain letters only.");
+        return;
+    }
+
+    if (customers.some(c => c.username === userVal)) {
+        alert("Username is already taken!");
+        return;
+    }
 
     if (customers.some(c => c.phone === phoneVal)) {
         alert("Mobile number is already registered!");
@@ -2227,6 +2311,7 @@ function addCustomerAdmin(event) {
     const newCust = {
         id: `CUST-${Math.floor(100 + Math.random() * 900)}`,
         name: nameVal,
+        username: userVal,
         phone: phoneVal,
         email: emailVal,
         password: passVal,
@@ -2257,6 +2342,7 @@ function startEditCustomerAdmin(id) {
 
     document.getElementById('ecId').value = customer.id;
     document.getElementById('ecName').value = customer.name;
+    document.getElementById('ecUser').value = customer.username || '';
     document.getElementById('ecPhone').value = customer.phone;
     document.getElementById('ecEmail').value = customer.email || '';
     document.getElementById('ecAddress').value = customer.address;
@@ -2277,6 +2363,7 @@ function saveCustomerAdmin(event) {
     event.preventDefault();
     const idVal = document.getElementById('ecId').value;
     const nameVal = document.getElementById('ecName').value.trim();
+    const userVal = document.getElementById('ecUser').value.trim().toLowerCase();
     const phoneVal = document.getElementById('ecPhone').value.trim();
     const emailVal = document.getElementById('ecEmail').value.trim();
     const addressVal = document.getElementById('ecAddress').value.trim();
@@ -2289,7 +2376,18 @@ function saveCustomerAdmin(event) {
     const index = customers.findIndex(c => c.id === idVal);
 
     if (index !== -1) {
+        if (!/^[a-zA-Z]+$/.test(userVal)) {
+            alert("Username must contain letters only.");
+            return;
+        }
+
+        if (userVal !== customers[index].username && customers.some(c => c.username === userVal)) {
+            alert("Username is already taken!");
+            return;
+        }
+
         customers[index].name = nameVal;
+        customers[index].username = userVal;
         customers[index].phone = phoneVal;
         customers[index].email = emailVal;
         customers[index].address = addressVal;
@@ -2590,4 +2688,35 @@ function deleteQaAdmin(id) {
         renderChatbotTab(document.getElementById('admin-tab-content'));
     }
 }
+
+/* ==========================================================
+   Portal Hub Navigation Dropdown Controllers
+   ========================================================== */
+function togglePortalDropdown(event) {
+    event.stopPropagation();
+    const dropdown = document.getElementById('portalDropdownMenu');
+    const btn = document.getElementById('portalDropdownBtn');
+    if (!dropdown || !btn) return;
+
+    dropdown.classList.toggle('show');
+    btn.classList.toggle('active');
+}
+
+function closePortalDropdown() {
+    const dropdown = document.getElementById('portalDropdownMenu');
+    const btn = document.getElementById('portalDropdownBtn');
+    if (dropdown) dropdown.classList.remove('show');
+    if (btn) btn.classList.remove('active');
+}
+
+// Global click handler to dismiss dropdown when clicking outside
+window.addEventListener('click', (e) => {
+    const dropdown = document.getElementById('portalDropdownMenu');
+    const btn = document.getElementById('portalDropdownBtn');
+    if (dropdown && dropdown.classList.contains('show')) {
+        if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+            closePortalDropdown();
+        }
+    }
+});
 

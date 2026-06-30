@@ -32,10 +32,36 @@
                     <li class="nav-item" onclick="navigateTo('about')">About Us</li>
                     <li class="nav-item" onclick="navigateTo('careers')">Careers</li>
                     <li class="nav-item" onclick="navigateTo('chatbot')">AI Assistant</li>
-                    <li class="nav-item" onclick="navigateTo('account')">My Account</li>
                     <li class="nav-item" onclick="navigateTo('contact')">Contact</li>
-                    <li class="nav-item admin-nav-link" onclick="navigateTo('admin')" style="color: var(--accent); font-weight: bold; margin-left: 8px;">Admin Portal</li>
                 </ul>
+
+                <!-- Portals Dropdown Menu -->
+                <div class="portal-dropdown">
+                    <button class="portal-dropdown-btn" id="portalDropdownBtn" onclick="togglePortalDropdown(event)">
+                        Portal Hub 
+                        <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div id="portalDropdownMenu" class="portal-dropdown-content glass-panel">
+                        <div class="dropdown-item-header">Client Portals</div>
+                        <a href="#" class="dropdown-item" onclick="event.preventDefault(); closePortalDropdown(); navigateTo('account');">
+                            <span class="item-icon">👤</span>
+                            <div class="item-desc">
+                                <strong>My Account</strong>
+                                <span>Track your jar balance & order refills</span>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item-header">Staff Portals</div>
+                        <a href="#" class="dropdown-item" onclick="event.preventDefault(); closePortalDropdown(); navigateTo('admin');">
+                            <span class="item-icon">🔒</span>
+                            <div class="item-desc">
+                                <strong>Admin Portal</strong>
+                                <span>Manage routes, orders & reviews</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
                 <button class="connect-btn" onclick="navigateTo('contact')">Connect</button>
             </nav>
         </div>
@@ -1635,12 +1661,12 @@
                 <!-- Login card -->
                 <div class="card glass-panel" style="padding: 32px;">
                     <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 8px;">Customer Log In</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">Enter your mobile number and password to view your jar balances, schedules, and profile details.</p>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">Enter your alphabetic username and password to view your jar balances, schedules, and profile details.</p>
                     
                     <form id="userLoginForm" onsubmit="handleCustomerLogin(event)" style="display: flex; flex-direction: column; gap: 16px;">
                         <div class="form-group">
-                            <label for="loginPhone">Registered Mobile:</label>
-                            <input type="tel" id="loginPhone" required placeholder="10-digit mobile number">
+                            <label for="loginUser">Username (Alphabetic):</label>
+                            <input type="text" id="loginUser" required placeholder="Enter username (letters only)" pattern="[a-zA-Z]+" title="Letters only, e.g. rahul">
                         </div>
                         <div class="form-group">
                             <label for="loginPass">Password:</label>
@@ -1663,19 +1689,23 @@
                                 <input type="text" id="regName" required placeholder="Enter full name">
                             </div>
                             <div class="form-group">
-                                <label for="regPhone">Mobile Number:</label>
-                                <input type="tel" id="regPhone" required placeholder="10-digit mobile">
+                                <label for="regUser">Username (Alphabetic):</label>
+                                <input type="text" id="regUser" required placeholder="Letters only (e.g. rahul)" pattern="[a-zA-Z]+" title="Letters only, e.g. rahul">
                             </div>
                         </div>
                         <div class="calc-grid" style="gap: 16px;">
                             <div class="form-group">
-                                <label for="regEmail">Email (optional):</label>
-                                <input type="email" id="regEmail" placeholder="Enter email address">
+                                <label for="regPhone">Mobile Number:</label>
+                                <input type="tel" id="regPhone" required placeholder="10-digit mobile">
                             </div>
                             <div class="form-group">
                                 <label for="regPass">Account Password:</label>
                                 <input type="password" id="regPass" required placeholder="Create secure password">
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email (optional):</label>
+                            <input type="email" id="regEmail" placeholder="Enter email address">
                         </div>
                         <div class="form-group">
                             <label for="regAddress">Full Delivery Address:</label>
@@ -1685,6 +1715,26 @@
                         <button type="submit" class="btn-primary" style="justify-content: center; padding: 12px; margin-top: 10px;">Register Account</button>
                     </form>
                 </div>
+            </div>
+
+            <!-- User Login 2-Step Verification Sub-view -->
+            <div id="user-login-2fa-subview" class="admin-login-container glass-panel" style="display: none; max-width: 450px; margin: 32px auto;">
+                <div class="login-header" style="text-align: center;">
+                    <div style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width: 60px; height: 60px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 12px auto;">
+                        🔒
+                    </div>
+                    <h2>2-Step Verification</h2>
+                    <p id="user2faLoginInstructions" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">A 6-digit verification code has been simulated for your user account.</p>
+                </div>
+                <form id="userLogin2faForm" onsubmit="handleCustomer2faVerify(event)" style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+                    <div class="form-group" style="text-align: center;">
+                        <label for="userLogin2faCode" style="font-weight: 500;">Enter 6-digit verification code:</label>
+                        <input type="text" id="userLogin2faCode" required placeholder="Code" maxlength="6" style="text-align: center; font-size: 1.3rem; letter-spacing: 6px; padding: 10px; width: 200px; margin: 8px auto; display: block; border-radius: 8px; border: 1px solid var(--surface-border); outline: none;">
+                    </div>
+                    <div id="userLogin2faError" style="display: none; text-align: center; color: #dc2626; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px;"></div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 10px;">Verify & Log In</button>
+                    <button type="button" onclick="cancelCustomerLogin2fa()" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 4px; padding: 10px;">Cancel & Go Back</button>
+                </form>
             </div>
 
             <!-- Renders when LOGGED IN -->
@@ -1746,8 +1796,8 @@
                                 <input type="password" id="changeCurrentPass" required placeholder="Verify current password" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--surface-border);">
                             </div>
                             <div class="form-group">
-                                <label for="changeNewUser" style="font-size: 0.85rem;">New Username / Mobile:</label>
-                                <input type="text" id="changeNewUser" required placeholder="Enter new mobile number" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--surface-border);">
+                                <label for="changeNewUser" style="font-size: 0.85rem;">New Username (Alphabetic):</label>
+                                <input type="text" id="changeNewUser" required placeholder="Enter letters only (e.g. rahulnew)" pattern="[a-zA-Z]+" title="Letters only" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--surface-border);">
                             </div>
                             <div class="form-group">
                                 <label for="changeNewPass" style="font-size: 0.85rem;">New Password:</label>
