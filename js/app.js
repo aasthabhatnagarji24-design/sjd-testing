@@ -43,6 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Trigger simulator initial step
     activateStep(1);
+
+    // Render public reviews grid
+    renderReviews();
+
+    // Check user portal session
+    checkCustomerAccess();
+
+    // Initialize chatbot UI widgets
+    initChatbotUI();
 });
 
 /**
@@ -78,6 +87,8 @@ function navigateTo(pageId, tabSubState = '') {
         else if (pageId === 'schedules' && text === 'daily delivery schedules') item.classList.add('active');
         else if (pageId === 'about' && text === 'about us') item.classList.add('active');
         else if (pageId === 'careers' && text === 'careers') item.classList.add('active');
+        else if (pageId === 'chatbot' && text === 'ai assistant') item.classList.add('active');
+        else if (pageId === 'account' && text === 'my account') item.classList.add('active');
         else if (pageId === 'contact' && text === 'contact') item.classList.add('active');
         else if (pageId === 'admin' && text === 'admin portal') item.classList.add('active');
     });
@@ -103,6 +114,8 @@ function navigateTo(pageId, tabSubState = '') {
         }
     } else if (pageId === 'admin') {
         checkAdminAccess();
+    } else if (pageId === 'account') {
+        checkCustomerAccess();
     }
 }
 
@@ -537,6 +550,94 @@ function initDatabase() {
     if (!localStorage.getItem('sjd_admin_password')) {
         localStorage.setItem('sjd_admin_password', 'jaldhara2026');
     }
+
+    // 6. Customers Database
+    if (!localStorage.getItem('sjd_customers')) {
+        const defaultCustomers = [
+            {
+                id: 'CUST-101',
+                name: 'Rahul Verma',
+                phone: '9876543222',
+                email: 'rahul.verma@gmail.com',
+                password: 'password123',
+                address: 'Plot 42, Ward 3, Sanchi Stupa Road, Sanchi',
+                ratePlan: 'standard',
+                jarsDelivered: 12,
+                jarsReturned: 10,
+                status: 'Active',
+                schedule: 'Daily'
+            },
+            {
+                id: 'CUST-102',
+                name: 'Priyanka Patel',
+                phone: '9425022334',
+                email: 'priyanka.p@yahoo.com',
+                password: 'password123',
+                address: 'Shree heights, Block B, Salamatpur',
+                ratePlan: 'camper',
+                jarsDelivered: 8,
+                jarsReturned: 8,
+                status: 'Active',
+                schedule: 'Alternate'
+            }
+        ];
+        localStorage.setItem('sjd_customers', JSON.stringify(defaultCustomers));
+    }
+
+    // 7. Customer Reviews
+    if (!localStorage.getItem('sjd_reviews')) {
+        const defaultReviews = [
+            {
+                id: 'REV-101',
+                name: 'Sanjay Pathak',
+                location: 'Sanchi Bypass',
+                rating: 5,
+                comment: 'Shri Jal Dhara water quality is top-notch. The RO+UV treatment is visible in the clear, sweet taste. Their jar delivery is highly reliable and counts are logged transparently!',
+                date: new Date(Date.now() - 3600000 * 24 * 5).toISOString(),
+                status: 'Approved'
+            },
+            {
+                id: 'REV-102',
+                name: 'Neelam Shakya',
+                location: 'Salamatpur Main',
+                rating: 5,
+                comment: 'Excellent camper supply for our housing colony event. The insulated campers kept the water cool and refreshing throughout the summer heat. Strongly recommend their services!',
+                date: new Date(Date.now() - 3600000 * 24 * 12).toISOString(),
+                status: 'Approved'
+            },
+            {
+                id: 'REV-103',
+                name: 'Anil Yadav',
+                location: 'Sanchi Town',
+                rating: 4,
+                comment: 'Punctual daily water jar delivery in the morning. Their online tracker makes counting simple. Customer support is polite and resolves discrepancies fast.',
+                date: new Date(Date.now() - 3600000 * 24 * 20).toISOString(),
+                status: 'Approved'
+            }
+        ];
+        localStorage.setItem('sjd_reviews', JSON.stringify(defaultReviews));
+    }
+
+    // 8. Newsletter Subscribers
+    if (!localStorage.getItem('sjd_subscribers')) {
+        const defaultSubscribers = [
+            { email: 'amit.sharma@example.com', date: new Date(Date.now() - 3600000 * 24 * 2).toISOString() },
+            { email: 'rverma@gmail.com', date: new Date(Date.now() - 3600000 * 24 * 1).toISOString() }
+        ];
+        localStorage.setItem('sjd_subscribers', JSON.stringify(defaultSubscribers));
+    }
+
+    // 9. Chatbot Knowledge Base
+    if (!localStorage.getItem('sjd_chatbot_qa')) {
+        const defaultQA = [
+            { id: 'QA-1', trigger: 'hi|hello|hey|greetings', reply: 'Hello! I am Jal Sanghi, your Shri Jal Dhara water assistant. 💧 How can I help you today? You can check prices, delivery routes, or request a booking!' },
+            { id: 'QA-2', trigger: 'price|rate|cost|how much', reply: 'Our standard purified water rates are:\n• 20L Standard Bubble Jar: ₹30/jar\n• 20L Insulated Camper: ₹40/camper\n• Bulk/Society Special Rate: ₹25/jar\n(Note: A security deposit of ₹150 applies for the physical jar on first delivery)' },
+            { id: 'QA-3', trigger: 'route|location|delivery area|sanchi|salamatpur', reply: 'We deliver daily across:\n• Sanchi Town (Stupa Road, Station Road, Hedgewar Colony) - Morning route (7:30 AM - 10:30 AM)\n• Salamatpur (Market area, Bus Stand, Station Road) - Afternoon route (1:00 PM - 4:00 PM)\n• Bypass Suburbs - Alternate days morning route' },
+            { id: 'QA-4', trigger: 'purity|pure|ro|uv|tds|filtration', reply: 'Shri Jal Dhara water is treated using our high-tech 2000 LPH filtration plant. Our 4-step process includes: Reverse Osmosis (RO) to clear dissolved salts, UV Treatment to destroy microbes, TDS adjustments to restore healthy minerals, and pH balancing (7.2 - 7.8) for a smooth throat-feel!' },
+            { id: 'QA-5', trigger: 'contact|phone|helpline|support|number|call', reply: 'You can call our central support helpline at +91 91833 55900 (Open 8 AM - 8 PM daily), email us at admin.shrijaldhara@gmail.com, or directly click the "Chat on WhatsApp" button in the Contact page!' }
+        ];
+        localStorage.setItem('sjd_chatbot_qa', JSON.stringify(defaultQA));
+    }
 }
 
 /**
@@ -634,6 +735,9 @@ function renderAdminTab() {
         case 'dashboard':
             renderDashboardTab(container);
             break;
+        case 'customers':
+            renderCustomersTab(container);
+            break;
         case 'enquiries':
             renderEnquiriesTab(container);
             break;
@@ -645,6 +749,15 @@ function renderAdminTab() {
             break;
         case 'routes':
             renderRoutesTab(container);
+            break;
+        case 'reviews':
+            renderReviewsTab(container);
+            break;
+        case 'subscribers':
+            renderSubscribersTab(container);
+            break;
+        case 'chatbot':
+            renderChatbotTab(container);
             break;
         case 'settings':
             renderSettingsTab(container);
@@ -696,9 +809,9 @@ function renderDashboardTab(container) {
             <div class="card glass-panel recent-activity-box">
                 <h4>System Logs & Info</h4>
                 <div style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main); display: flex; flex-direction: column; gap: 10px;">
-                    <div>📍 <strong>Active Delivery Routes:</strong> ${routes.length} zones configured internally</div>
-                    <div>💰 <strong>Calculator Products:</strong> 3 rates managed dynamically</div>
-                    <div>🔐 <strong>Session Access:</strong> Expires immediately upon tab/window closure.</div>
+                    <div><strong>Active Delivery Routes:</strong> ${routes.length} zones configured internally</div>
+                    <div><strong>Calculator Products:</strong> 3 rates managed dynamically</div>
+                    <div><strong>Session Access:</strong> Expires immediately upon tab/window closure.</div>
                     
                     <div style="margin-top: 12px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 12px; display: flex; gap: 10px;">
                         <button class="btn-primary" onclick="switchAdminTab('enquiries')" style="font-size: 0.85rem; padding: 8px 14px;">Manage Enquiries &rarr;</button>
@@ -949,7 +1062,7 @@ function renderCareersTab(container) {
                                         </div>
                                         <div class="detail-block">
                                             <h5>Attached Bio-Data File</h5>
-                                            <p>${c.fileName ? `📄 <strong>${c.fileName}</strong> (Click to view)` : 'No file upload (Written experience details below)'}</p>
+                                            <p>${c.fileName ? `<strong>${c.fileName}</strong> (Click to view)` : 'No file upload (Written experience details below)'}</p>
                                         </div>
                                     </div>
                                     <div class="detail-block" style="margin-top: 12px;">
@@ -1179,12 +1292,12 @@ function renderSettingsTab(container) {
                 <h4 style="margin: 0; color: var(--primary-dark); font-size: 1.2rem;">Local Database Utility</h4>
                 <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Since this is a client-side SPA, all data resides locally on your browser. You can export this database to a JSON file to save backups or migrate records.</p>
                 
-                <button class="btn-primary" onclick="exportDatabase()" style="width: 100%; justify-content: center; padding: 10px;">💾 Backup Database (Export JSON)</button>
+                <button class="btn-primary" onclick="exportDatabase()" style="width: 100%; justify-content: center; padding: 10px;">Backup Database (Export JSON)</button>
 
                 <div style="border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 16px; margin-top: 10px; display: flex; flex-direction: column; gap: 10px;">
-                    <p style="font-size: 0.85rem; color: #dc2626; font-weight: 600; margin: 0;">⚠️ Danger Zone: Restore Demo Records</p>
+                    <p style="font-size: 0.85rem; color: #dc2626; font-weight: 600; margin: 0;">Danger Zone: Restore Demo Records</p>
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">This will wipe out all submitted bookings, complaints, and job applications on this browser and reload SJD default mock records.</p>
-                    <button class="logout-btn" onclick="resetDatabaseToDemo()" style="margin: 0; width: 100%; padding: 10px; justify-content: center;">🔄 Wipe & Load Demo Records</button>
+                    <button class="logout-btn" onclick="resetDatabaseToDemo()" style="margin: 0; width: 100%; padding: 10px; justify-content: center;">Wipe & Load Demo Records</button>
                 </div>
             </div>
         </div>
@@ -1275,3 +1388,1206 @@ function deleteItem(id, collectionName) {
         renderAdminTab();
     }
 }
+
+/* ==========================================================
+   Google Authentication & 2-Step Verification for Admin
+   ========================================================== */
+let admin2faCode = null;
+
+function startAdminGoogleAuth() {
+    const errorEl = document.getElementById('adminLoginError');
+    if (errorEl) errorEl.style.display = 'none';
+
+    // Simulated Google Login input popup
+    const email = prompt("Sign in with Google\nEnter your registered SJD Google account:", "admin@shrijaldhara.com");
+    if (!email) return;
+
+    if (email.trim().toLowerCase() === "admin@shrijaldhara.com") {
+        triggerAdmin2Step();
+    } else {
+        alert("Access Denied: This Google account is not authorized for SJD Admin Portal.");
+    }
+}
+
+function triggerAdmin2Step() {
+    // Generate a random 6-digit code
+    admin2faCode = Math.floor(100000 + Math.random() * 900000).toString();
+    
+    // Display standard notification alert simulating 2FA delivery
+    alert(`[Google Security 2FA] Your 6-digit verification code is: ${admin2faCode}`);
+
+    // Toggle subviews
+    document.getElementById('admin-login-subview').style.display = 'none';
+    document.getElementById('admin-2fa-subview').style.display = 'block';
+
+    document.getElementById('admin2faCode').value = '';
+    document.getElementById('admin2faError').style.display = 'none';
+}
+
+function handleAdmin2faVerify(event) {
+    event.preventDefault();
+    const entered = document.getElementById('admin2faCode').value.trim();
+    const errorEl = document.getElementById('admin2faError');
+
+    if (entered === admin2faCode) {
+        sessionStorage.setItem('sjd_admin_logged_in', 'true');
+        document.getElementById('admin-2fa-subview').style.display = 'none';
+        checkAdminAccess();
+        alert("Google 2-Step Verification successful. Admin credentials confirmed.");
+    } else {
+        errorEl.textContent = "Incorrect verification pin. Please try again.";
+        errorEl.style.display = 'block';
+    }
+}
+
+function cancelAdmin2fa() {
+    admin2faCode = null;
+    document.getElementById('admin-2fa-subview').style.display = 'none';
+    document.getElementById('admin-login-subview').style.display = 'block';
+}
+
+/* ==========================================================
+   User Portal ("My Account") - Access, Registrations, Profile & 2FA
+   ========================================================== */
+let pendingCredUpdate = null;
+let user2faCode = null;
+
+function checkCustomerAccess() {
+    const loggedPhone = sessionStorage.getItem('sjd_customer_phone');
+    const loggedOutEl = document.getElementById('user-logged-out-state');
+    const loggedInEl = document.getElementById('user-logged-in-state');
+
+    if (!loggedOutEl || !loggedInEl) return;
+
+    if (loggedPhone) {
+        const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+        const customer = customers.find(c => c.phone === loggedPhone);
+
+        if (customer) {
+            loggedOutEl.style.display = 'none';
+            loggedInEl.style.display = 'flex';
+
+            // Populate dashboard
+            document.getElementById('dashCustomerName').textContent = customer.name;
+            document.getElementById('dashCustomerId').textContent = customer.id;
+            
+            const statusEl = document.getElementById('dashCustomerStatus');
+            statusEl.textContent = customer.status;
+            statusEl.className = 'status-tag ' + (customer.status === 'Active' ? 'status-tag-active' : 'status-tag-inactive');
+            statusEl.style.background = customer.status === 'Active' ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)';
+            statusEl.style.color = customer.status === 'Active' ? '#10b981' : '#ef4444';
+
+            document.getElementById('dashJarsDelivered').textContent = customer.jarsDelivered;
+            document.getElementById('dashJarsReturned').textContent = customer.jarsReturned;
+            
+            const outstanding = customer.jarsDelivered - customer.jarsReturned;
+            document.getElementById('dashJarsOutstanding').textContent = outstanding;
+
+            document.getElementById('dashCustomerAddress').textContent = customer.address;
+            
+            let rateText = "Standard Jar (₹30/jar)";
+            if (customer.ratePlan === 'camper') rateText = "Insulated Camper (₹40/camper)";
+            else if (customer.ratePlan === 'bulk') rateText = "Bulk / Special Rate (₹25/jar)";
+            document.getElementById('dashCustomerRatePlan').textContent = rateText;
+            return;
+        }
+    }
+
+    loggedOutEl.style.display = 'grid';
+    loggedInEl.style.display = 'none';
+}
+
+function handleCustomerRegister(event) {
+    event.preventDefault();
+    const nameVal = document.getElementById('regName').value.trim();
+    const phoneVal = document.getElementById('regPhone').value.trim();
+    const emailVal = document.getElementById('regEmail').value.trim();
+    const passVal = document.getElementById('regPass').value.trim();
+    const addressVal = document.getElementById('regAddress').value.trim();
+    const errorEl = document.getElementById('userRegisterError');
+
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+
+    if (customers.some(c => c.phone === phoneVal)) {
+        errorEl.textContent = "Mobile number is already registered for another account.";
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    const newCustomer = {
+        id: `CUST-${Math.floor(100 + Math.random() * 900)}`,
+        name: nameVal,
+        phone: phoneVal,
+        email: emailVal,
+        password: passVal,
+        address: addressVal,
+        ratePlan: 'standard',
+        jarsDelivered: 0,
+        jarsReturned: 0,
+        status: 'Active',
+        schedule: 'Daily'
+    };
+
+    customers.push(newCustomer);
+    localStorage.setItem('sjd_customers', JSON.stringify(customers));
+
+    sessionStorage.setItem('sjd_customer_phone', phoneVal);
+    errorEl.style.display = 'none';
+    document.getElementById('userRegisterForm').reset();
+    checkCustomerAccess();
+    alert("Account registered successfully! Welcome to Shri Jal Dhara Portal.");
+}
+
+function handleCustomerLogin(event) {
+    event.preventDefault();
+    const phoneVal = document.getElementById('loginPhone').value.trim();
+    const passVal = document.getElementById('loginPass').value.trim();
+    const errorEl = document.getElementById('userLoginError');
+
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    const customer = customers.find(c => c.phone === phoneVal && c.password === passVal);
+
+    if (customer) {
+        if (customer.status !== 'Active') {
+            errorEl.textContent = "Your account status is currently set as Inactive. Please contact support.";
+            errorEl.style.display = 'block';
+            return;
+        }
+        sessionStorage.setItem('sjd_customer_phone', phoneVal);
+        errorEl.style.display = 'none';
+        document.getElementById('userLoginForm').reset();
+        checkCustomerAccess();
+    } else {
+        errorEl.textContent = "Incorrect mobile number or password.";
+        errorEl.style.display = 'block';
+    }
+}
+
+function handleCustomerLogout() {
+    sessionStorage.removeItem('sjd_customer_phone');
+    checkCustomerAccess();
+}
+
+/* User Profile Update Actions */
+function openEditProfileModal() {
+    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    const customer = customers.find(c => c.phone === phone);
+    if (!customer) return;
+
+    document.getElementById('editProfileName').value = customer.name;
+    document.getElementById('editProfileEmail').value = customer.email || '';
+    document.getElementById('editProfileAddress').value = customer.address;
+    document.getElementById('editProfileModal').style.display = 'block';
+}
+
+function closeEditProfileModal() {
+    document.getElementById('editProfileModal').style.display = 'none';
+}
+
+function handleProfileUpdateSubmit(event) {
+    event.preventDefault();
+    const nameVal = document.getElementById('editProfileName').value.trim();
+    const emailVal = document.getElementById('editProfileEmail').value.trim();
+    const addressVal = document.getElementById('editProfileAddress').value.trim();
+
+    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    const index = customers.findIndex(c => c.phone === phone);
+
+    if (index !== -1) {
+        customers[index].name = nameVal;
+        customers[index].email = emailVal;
+        customers[index].address = addressVal;
+        localStorage.setItem('sjd_customers', JSON.stringify(customers));
+        
+        closeEditProfileModal();
+        checkCustomerAccess();
+        alert("Profile details updated successfully!");
+    }
+}
+
+function requestCustomerRefill() {
+    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    const customer = customers.find(c => c.phone === phone);
+    if (!customer) return;
+
+    const enquiries = JSON.parse(localStorage.getItem('sjd_enquiries') || '[]');
+    const caseId = `SJD-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    const newRequest = {
+        id: caseId,
+        name: customer.name,
+        phone: customer.phone,
+        email: customer.email || '',
+        need: 'Home',
+        address: customer.address,
+        details: `Refill Request logged directly from User Dashboard. Outstanding jar balance: ${customer.jarsDelivered - customer.jarsReturned} jars.`,
+        status: 'New',
+        date: new Date().toISOString(),
+        notes: ''
+    };
+
+    enquiries.push(newRequest);
+    localStorage.setItem('sjd_enquiries', JSON.stringify(enquiries));
+    alert(`Refill request received! Your request case ID is #${caseId}. Our driver will deliver within 2 hours.`);
+}
+
+/* User Account Settings Update with Double Verification */
+function initiateChangeCredentials(event) {
+    event.preventDefault();
+    const curPassVal = document.getElementById('changeCurrentPass').value.trim();
+    const newUserVal = document.getElementById('changeNewUser').value.trim();
+    const newPassVal = document.getElementById('changeNewPass').value.trim();
+    const confirmPassVal = document.getElementById('changeConfirmPass').value.trim();
+    const errorEl = document.getElementById('credentialChangeError');
+
+    const phone = sessionStorage.getItem('sjd_customer_phone');
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    const customer = customers.find(c => c.phone === phone);
+
+    if (!customer) return;
+
+    if (curPassVal !== customer.password) {
+        errorEl.textContent = "Verification failed: Current password is incorrect.";
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    if (newPassVal !== confirmPassVal) {
+        errorEl.textContent = "New passwords do not match.";
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    if (newUserVal !== phone && customers.some(c => c.phone === newUserVal)) {
+        errorEl.textContent = "The new mobile number is already registered for another account.";
+        errorEl.style.display = 'block';
+        return;
+    }
+
+    errorEl.style.display = 'none';
+
+    pendingCredUpdate = {
+        newPhone: newUserVal,
+        newPass: newPassVal
+    };
+
+    // Generate random 6-digit pin
+    user2faCode = Math.floor(100000 + Math.random() * 900000).toString();
+    alert(`[Security Check 2FA] Your credential change authorization code is: ${user2faCode}`);
+
+    document.getElementById('user2faInput').value = '';
+    document.getElementById('user2faError').style.display = 'none';
+    document.getElementById('user2faModal').style.display = 'block';
+}
+
+function closeUser2faModal() {
+    document.getElementById('user2faModal').style.display = 'none';
+    pendingCredUpdate = null;
+    user2faCode = null;
+}
+
+function verifyUser2faCode() {
+    const entered = document.getElementById('user2faInput').value.trim();
+    const errorEl = document.getElementById('user2faError');
+
+    if (entered === user2faCode) {
+        const phone = sessionStorage.getItem('sjd_customer_phone');
+        const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+        const index = customers.findIndex(c => c.phone === phone);
+
+        if (index !== -1 && pendingCredUpdate) {
+            customers[index].phone = pendingCredUpdate.newPhone;
+            customers[index].password = pendingCredUpdate.newPass;
+            localStorage.setItem('sjd_customers', JSON.stringify(customers));
+
+            closeUser2faModal();
+            document.getElementById('changeCredentialsForm').reset();
+            sessionStorage.removeItem('sjd_customer_phone');
+            checkCustomerAccess();
+
+            alert("Username and password updated successfully! Please log in using your new details.");
+        }
+    } else {
+        errorEl.textContent = "Incorrect verification pin. Please try again.";
+        errorEl.style.display = 'block';
+    }
+}
+
+/* ==========================================================
+   Live Review System - Rendering & Homepage Actions
+   ========================================================== */
+function toggleReviewForm() {
+    const form = document.getElementById('publicReviewForm');
+    const btn = document.getElementById('reviewFormToggleBtn');
+    if (!form || !btn) return;
+
+    if (form.style.display === 'none') {
+        form.style.display = 'flex';
+        btn.textContent = '- Collapse Form';
+    } else {
+        form.style.display = 'none';
+        btn.textContent = '+ Expand Form';
+    }
+}
+
+function renderReviews() {
+    const grid = document.getElementById('public-reviews-grid');
+    if (!grid) return;
+
+    const reviews = JSON.parse(localStorage.getItem('sjd_reviews') || '[]');
+    const approvedReviews = reviews.filter(r => r.status === 'Approved');
+
+    grid.innerHTML = '';
+
+    if (approvedReviews.length === 0) {
+        grid.innerHTML = '<div style="grid-column: span 3; text-align: center; color: var(--text-muted); padding: 24px;">No customer reviews to show yet. Be the first to share your experience!</div>';
+        return;
+    }
+
+    approvedReviews.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'card glass-panel review-card';
+        const starsStr = '⭐'.repeat(r.rating);
+
+        card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="margin: 0; color: var(--primary-dark);">${r.name}</h4>
+                <span class="rating-stars">${starsStr}</span>
+            </div>
+            <span style="font-size: 0.85rem; color: var(--accent); font-weight: 500;">📍 ${r.location}</span>
+            <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted); font-style: italic; margin: 4px 0 0 0;">"${r.comment}"</p>
+            <span style="font-size: 0.75rem; color: #94a3b8; align-self: flex-end; margin-top: auto;">Date: ${new Date(r.date).toLocaleDateString()}</span>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function handleReviewSubmit(event) {
+    event.preventDefault();
+    const nameVal = document.getElementById('revName').value.trim();
+    const locVal = document.getElementById('revLocation').value;
+    const rateVal = parseInt(document.getElementById('revRating').value);
+    const commentVal = document.getElementById('revComment').value.trim();
+
+    const reviews = JSON.parse(localStorage.getItem('sjd_reviews') || '[]');
+    const newRev = {
+        id: `REV-${Math.floor(100 + Math.random() * 900)}`,
+        name: nameVal,
+        location: locVal,
+        rating: rateVal,
+        comment: commentVal,
+        date: new Date().toISOString(),
+        status: 'Approved' // auto-approve for live review demo experience
+    };
+
+    reviews.unshift(newRev);
+    localStorage.setItem('sjd_reviews', JSON.stringify(reviews));
+
+    document.getElementById('publicReviewForm').reset();
+    toggleReviewForm();
+    renderReviews();
+    alert("Thank you! Your customer review was posted successfully on the home page.");
+}
+
+/* ==========================================================
+   Newsletter Subscription logic
+   ========================================================== */
+function handleNewsletterSubmit(event) {
+    event.preventDefault();
+    const emailVal = document.getElementById('nlEmail').value.trim();
+    const successEl = document.getElementById('newsletterSuccess');
+
+    if (!successEl) return;
+
+    const subscribers = JSON.parse(localStorage.getItem('sjd_subscribers') || '[]');
+
+    if (subscribers.some(s => s.email.toLowerCase() === emailVal.toLowerCase())) {
+        successEl.textContent = "You are already subscribed to our newsletter list!";
+        successEl.style.color = '#e11d48';
+        successEl.style.display = 'block';
+        return;
+    }
+
+    subscribers.push({
+        email: emailVal,
+        date: new Date().toISOString()
+    });
+
+    localStorage.setItem('sjd_subscribers', JSON.stringify(subscribers));
+
+    document.getElementById('newsletterForm').reset();
+    successEl.textContent = "Thank you! You have successfully subscribed to our newsletter list.";
+    successEl.style.color = 'var(--accent)';
+    successEl.style.display = 'block';
+
+    setTimeout(() => {
+        successEl.style.display = 'none';
+    }, 5000);
+}
+
+/* ==========================================================
+   AI Chatbot Engine - Local intents processor & guided flows
+   ========================================================== */
+let chatSessionHistory = [
+    { sender: 'bot', text: 'Hello! I am Jal Sanghi, your Shri Jal Dhara water assistant. 💧 How can I help you today?', date: new Date().toISOString() }
+];
+
+let chatbotBookingState = {
+    step: 0, // 1: awaiting name, 2: phone, 3: address, 4: qty
+    name: '',
+    phone: '',
+    address: '',
+    qty: ''
+};
+
+function initChatbotUI() {
+    renderChatHistory();
+    renderChatChips();
+}
+
+function toggleChatbotWidget() {
+    const drawer = document.getElementById('chatbot-drawer');
+    const badge = document.getElementById('chatbot-fab-badge');
+    if (!drawer) return;
+
+    if (drawer.style.display === 'none') {
+        drawer.style.display = 'flex';
+        if (badge) badge.style.display = 'none';
+        renderChatHistory();
+        renderChatChips();
+    } else {
+        drawer.style.display = 'none';
+    }
+}
+
+function minimizeChatbotWidget() {
+    const drawer = document.getElementById('chatbot-drawer');
+    if (drawer) drawer.style.display = 'none';
+}
+
+function renderChatHistory() {
+    const drawerFeed = document.getElementById('drawer-chat-messages');
+    const pageFeed = document.getElementById('page-chat-messages');
+
+    const generateHTML = () => {
+        return chatSessionHistory.map(m => {
+            if (m.sender === 'user') {
+                return `
+                    <div class="chat-msg chat-msg-user">
+                        <div class="msg-avatar">👤</div>
+                        <div class="msg-bubble">${m.text.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="chat-msg chat-msg-bot">
+                        <div class="msg-avatar">💧</div>
+                        <div class="msg-bubble">${m.text.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
+            }
+        }).join('');
+    };
+
+    const htmlContent = generateHTML();
+    if (drawerFeed) {
+        drawerFeed.innerHTML = htmlContent;
+        drawerFeed.scrollTop = drawerFeed.scrollHeight;
+    }
+    if (pageFeed) {
+        pageFeed.innerHTML = htmlContent;
+        pageFeed.scrollTop = pageFeed.scrollHeight;
+    }
+}
+
+function renderChatChips() {
+    const drawerChips = document.getElementById('drawer-chat-chips');
+    const pageChips = document.getElementById('page-chat-chips');
+
+    const chipsHTML = `
+        <button class="chip-btn" onclick="handleChipClick('Check Delivery Rates')">Check Delivery Rates</button>
+        <button class="chip-btn" onclick="handleChipClick('Water Purity')">Water Purity</button>
+        <button class="chip-btn" onclick="handleChipClick('Book a Water Jar')">Book a Water Jar</button>
+        <button class="chip-btn" onclick="handleChipClick('Delivery Areas')">Delivery Areas</button>
+        <button class="chip-btn" onclick="handleChipClick('Chat on WhatsApp')">Chat on WhatsApp</button>
+    `;
+
+    if (drawerChips) drawerChips.innerHTML = chipsHTML;
+    if (pageChips) pageChips.innerHTML = chipsHTML;
+}
+
+function handleChipClick(chipText) {
+    if (chipText === 'Chat on WhatsApp') {
+        window.open("https://wa.me/919183355900?text=Hi%20Shri%20Jal%20Dhara,%20I%20would%20like%20to%20enquire%20about%20water%20jar%20refills.", "_blank");
+        return;
+    }
+    processUserMessage(chipText);
+}
+
+function handleDrawerChatSubmit(event) {
+    event.preventDefault();
+    const input = document.getElementById('drawerChatInput');
+    if (!input) return;
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    processUserMessage(text);
+}
+
+function handlePageChatSubmit(event) {
+    event.preventDefault();
+    const input = document.getElementById('pageChatInput');
+    if (!input) return;
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    processUserMessage(text);
+}
+
+function processUserMessage(text) {
+    chatSessionHistory.push({ sender: 'user', text: text, date: new Date().toISOString() });
+    renderChatHistory();
+
+    showBotTyping(true);
+
+    setTimeout(() => {
+        showBotTyping(false);
+        const reply = generateBotReply(text);
+        chatSessionHistory.push({ sender: 'bot', text: reply, date: new Date().toISOString() });
+        renderChatHistory();
+    }, 800);
+}
+
+function showBotTyping(show) {
+    const drawerFeed = document.getElementById('drawer-chat-messages');
+    const pageFeed = document.getElementById('page-chat-messages');
+
+    const typingHTML = `
+        <div class="chat-msg chat-msg-bot" id="chat-typing-indicator">
+            <div class="msg-avatar">💧</div>
+            <div class="msg-bubble" style="padding: 4px;">
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    `;
+
+    if (show) {
+        if (drawerFeed) {
+            drawerFeed.insertAdjacentHTML('beforeend', typingHTML);
+            drawerFeed.scrollTop = drawerFeed.scrollHeight;
+        }
+        if (pageFeed) {
+            pageFeed.insertAdjacentHTML('beforeend', typingHTML);
+            pageFeed.scrollTop = pageFeed.scrollHeight;
+        }
+    } else {
+        const ind = document.querySelectorAll('#chat-typing-indicator');
+        ind.forEach(el => el.remove());
+    }
+}
+
+function generateBotReply(userText) {
+    const textClean = userText.toLowerCase().trim();
+
+    if (chatbotBookingState.step > 0) {
+        return processBookingStep(textClean, userText);
+    }
+
+    if (textClean.includes('book') || textClean.includes('order') || textClean.includes('buy') || textClean.includes('start delivery') || textClean.includes('refill')) {
+        chatbotBookingState.step = 1;
+        return "I can help you book a water jar delivery route setup! Let's start.\n\nPlease enter your Full Name:";
+    }
+
+    // Custom Q&As from Database
+    const customQAs = JSON.parse(localStorage.getItem('sjd_chatbot_qa') || '[]');
+    for (let qa of customQAs) {
+        const triggers = qa.trigger.split('|');
+        if (triggers.some(t => textClean.includes(t.trim().toLowerCase()))) {
+            return qa.reply;
+        }
+    }
+
+    return "I am still learning, but I would love to help you! Please check our rates, delivery zones, or type 'Book a Water Jar'. Or call our team at +91 91833 55900.";
+}
+
+function processBookingStep(textClean, originalText) {
+    switch (chatbotBookingState.step) {
+        case 1:
+            chatbotBookingState.name = originalText;
+            chatbotBookingState.step = 2;
+            return `Noted, ${originalText}. What is your 10-digit mobile number?`;
+        case 2:
+            chatbotBookingState.phone = originalText;
+            chatbotBookingState.step = 3;
+            return "Please enter your full delivery address in Sanchi or Salamatpur:";
+        case 3:
+            chatbotBookingState.address = originalText;
+            chatbotBookingState.step = 4;
+            return "How many 20L jars do you need daily or per delivery? (e.g. 1, 2, 5...)";
+        case 4:
+            chatbotBookingState.qty = originalText;
+            chatbotBookingState.step = 0; // reset
+
+            const enquiries = JSON.parse(localStorage.getItem('sjd_enquiries') || '[]');
+            const caseId = `SJD-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            const newEnq = {
+                id: caseId,
+                name: chatbotBookingState.name,
+                phone: chatbotBookingState.phone,
+                email: '',
+                need: 'Home',
+                address: chatbotBookingState.address,
+                details: `AI Chatbot guided order setup. Qty per delivery: ${chatbotBookingState.qty} Jars.`,
+                status: 'New',
+                date: new Date().toISOString(),
+                notes: ''
+            };
+            enquiries.push(newEnq);
+            localStorage.setItem('sjd_enquiries', JSON.stringify(enquiries));
+
+            return `Excellent! I have successfully registered your delivery booking.\n\n• Case ID: #${caseId}\n• Name: ${chatbotBookingState.name}\n• Mobile: ${chatbotBookingState.phone}\n• Address: ${chatbotBookingState.address}\n• Qty: ${chatbotBookingState.qty} Jars\n\nOur route manager will contact you at ${chatbotBookingState.phone} within 1 hour to start your refills!`;
+        default:
+            chatbotBookingState.step = 0;
+            return "Oops, something went wrong with the booking flow. Let us know if you need rates or routes details.";
+    }
+}
+
+/* ==========================================================
+   Admin Portal Extensible Panels & Full CRUD Modules
+   ========================================================== */
+
+/* 1. Customers Registry CRUD */
+function renderCustomersTab(container) {
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    
+    container.innerHTML = `
+        <div class="admin-tab-header">
+            <h2>Customers Registry</h2>
+            <span style="font-size: 0.95rem; color: var(--text-muted);">${customers.length} registered clients</span>
+        </div>
+
+        <div class="routes-layout" style="margin-bottom: 24px;">
+            <!-- Add Customer Card -->
+            <div class="card glass-panel" style="padding: 24px;">
+                <h4 style="margin: 0 0 16px 0; color: var(--primary-dark); font-size: 1.2rem;">Add New Customer</h4>
+                <form id="adminAddCustomerForm" onsubmit="addCustomerAdmin(event)" style="display: flex; flex-direction: column; gap: 14px;">
+                    <div class="form-group">
+                        <label for="acName">Customer Full Name:</label>
+                        <input type="text" id="acName" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="acPhone">Mobile Number:</label>
+                        <input type="tel" id="acPhone" required placeholder="10-digit mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label for="acEmail">Email Address:</label>
+                        <input type="email" id="acEmail" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="acPass">Account Password:</label>
+                        <input type="password" id="acPass" required placeholder="Set password" value="password123">
+                    </div>
+                    <div class="form-group">
+                        <label for="acAddress">Delivery Address:</label>
+                        <textarea id="acAddress" rows="2" required placeholder="Colony and sector details"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="acRate">Rate Category Plan:</label>
+                        <select id="acRate">
+                            <option value="standard">Standard Bubble Jar (₹30)</option>
+                            <option value="camper">Insulated Camper (₹40)</option>
+                            <option value="bulk">Bulk / Society Special (₹25)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 10px;">Register Customer</button>
+                </form>
+            </div>
+
+            <!-- Customer Edit Overlay Dialog (Initially Hidden) -->
+            <div id="adminEditCustomerWrapper" class="card glass-panel" style="padding: 24px; display: none;">
+                <h4 style="margin: 0 0 16px 0; color: var(--primary-dark); font-size: 1.2rem;">Edit Customer & Ledgers</h4>
+                <form id="adminEditCustomerForm" onsubmit="saveCustomerAdmin(event)" style="display: flex; flex-direction: column; gap: 14px;">
+                    <input type="hidden" id="ecId">
+                    <div class="form-group">
+                        <label for="ecName">Full Name:</label>
+                        <input type="text" id="ecName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ecPhone">Mobile Number:</label>
+                        <input type="tel" id="ecPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ecEmail">Email Address:</label>
+                        <input type="email" id="ecEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="ecAddress">Delivery Address:</label>
+                        <textarea id="ecAddress" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="ecRate">Rate Plan Category:</label>
+                        <select id="ecRate">
+                            <option value="standard">Standard Bubble Jar (₹30)</option>
+                            <option value="camper">Insulated Camper (₹40)</option>
+                            <option value="bulk">Bulk / Society Special (₹25)</option>
+                        </select>
+                    </div>
+                    <div class="calc-grid" style="gap: 12px;">
+                        <div class="form-group">
+                            <label for="ecDelivered">Jars Delivered:</label>
+                            <input type="number" id="ecDelivered" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ecReturned">Empty Returned:</label>
+                            <input type="number" id="ecReturned" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ecStatus">Portal Access Status:</label>
+                        <select id="ecStatus">
+                            <option value="Active">Active / Approved</option>
+                            <option value="Inactive">Inactive / Suspended</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" class="btn-primary" style="flex-grow: 1; justify-content: center; padding: 10px;">Save Changes</button>
+                        <button type="button" onclick="cancelEditCustomerAdmin()" class="btn-secondary" style="flex-grow: 1; justify-content: center; padding: 10px;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Client ID</th>
+                        <th>Name & Contacts</th>
+                        <th>Address</th>
+                        <th>Rate Tier</th>
+                        <th>Jars Delivered</th>
+                        <th>Empty Returned</th>
+                        <th>Outstanding Balance</th>
+                        <th>Status</th>
+                        <th style="text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${customers.length === 0 ? '<tr><td colspan="9" style="text-align: center; color: var(--text-muted);">No registered customer records found.</td></tr>' : ''}
+                    ${customers.map(c => `
+                        <tr>
+                            <td><strong>${c.id}</strong></td>
+                            <td>
+                                <div><strong>${c.name}</strong></div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">${c.phone}</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">${c.email || 'N/A'}</div>
+                            </td>
+                            <td style="font-size: 0.85rem; max-width: 180px;">${c.address}</td>
+                            <td><span style="font-size: 0.85rem; text-transform: uppercase; font-weight: bold; color: var(--primary);">${c.ratePlan}</span></td>
+                            <td style="text-align: center;">${c.jarsDelivered}</td>
+                            <td style="text-align: center;">${c.jarsReturned}</td>
+                            <td style="text-align: center; font-weight: bold; color: ${c.jarsDelivered - c.jarsReturned > 0 ? '#f97316' : 'inherit'};">${c.jarsDelivered - c.jarsReturned}</td>
+                            <td><span class="status-tag" style="background: ${c.status === 'Active' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'}; color: ${c.status === 'Active' ? '#10b981' : '#ef4444'}; font-weight: 600;">${c.status}</span></td>
+                            <td style="text-align: right;">
+                                <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                                    <button class="action-btn" onclick="startEditCustomerAdmin('${c.id}')" style="font-size: 0.8rem; padding: 4px 10px;">Edit</button>
+                                    <button class="action-btn action-btn-delete" onclick="deleteCustomerAdmin('${c.id}')" style="font-size: 0.8rem; padding: 4px 10px;">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function addCustomerAdmin(event) {
+    event.preventDefault();
+    const nameVal = document.getElementById('acName').value.trim();
+    const phoneVal = document.getElementById('acPhone').value.trim();
+    const emailVal = document.getElementById('acEmail').value.trim();
+    const passVal = document.getElementById('acPass').value.trim();
+    const addressVal = document.getElementById('acAddress').value.trim();
+    const rateVal = document.getElementById('acRate').value;
+
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+
+    if (customers.some(c => c.phone === phoneVal)) {
+        alert("Mobile number is already registered!");
+        return;
+    }
+
+    const newCust = {
+        id: `CUST-${Math.floor(100 + Math.random() * 900)}`,
+        name: nameVal,
+        phone: phoneVal,
+        email: emailVal,
+        password: passVal,
+        address: addressVal,
+        ratePlan: rateVal,
+        jarsDelivered: 0,
+        jarsReturned: 0,
+        status: 'Active',
+        schedule: 'Daily'
+    };
+
+    customers.push(newCust);
+    localStorage.setItem('sjd_customers', JSON.stringify(customers));
+    
+    document.getElementById('adminAddCustomerForm').reset();
+    alert("New customer account registered successfully.");
+    renderCustomersTab(document.getElementById('admin-tab-content'));
+}
+
+function startEditCustomerAdmin(id) {
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    const customer = customers.find(c => c.id === id);
+    if (!customer) return;
+
+    // Show Edit panel
+    const editWrapper = document.getElementById('adminEditCustomerWrapper');
+    editWrapper.style.display = 'block';
+
+    document.getElementById('ecId').value = customer.id;
+    document.getElementById('ecName').value = customer.name;
+    document.getElementById('ecPhone').value = customer.phone;
+    document.getElementById('ecEmail').value = customer.email || '';
+    document.getElementById('ecAddress').value = customer.address;
+    document.getElementById('ecRate').value = customer.ratePlan;
+    document.getElementById('ecDelivered').value = customer.jarsDelivered;
+    document.getElementById('ecReturned').value = customer.jarsReturned;
+    document.getElementById('ecStatus').value = customer.status;
+
+    // Scroll to form
+    editWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function cancelEditCustomerAdmin() {
+    document.getElementById('adminEditCustomerWrapper').style.display = 'none';
+}
+
+function saveCustomerAdmin(event) {
+    event.preventDefault();
+    const idVal = document.getElementById('ecId').value;
+    const nameVal = document.getElementById('ecName').value.trim();
+    const phoneVal = document.getElementById('ecPhone').value.trim();
+    const emailVal = document.getElementById('ecEmail').value.trim();
+    const addressVal = document.getElementById('ecAddress').value.trim();
+    const rateVal = document.getElementById('ecRate').value;
+    const deliveredVal = parseInt(document.getElementById('ecDelivered').value) || 0;
+    const returnedVal = parseInt(document.getElementById('ecReturned').value) || 0;
+    const statusVal = document.getElementById('ecStatus').value;
+
+    const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+    const index = customers.findIndex(c => c.id === idVal);
+
+    if (index !== -1) {
+        customers[index].name = nameVal;
+        customers[index].phone = phoneVal;
+        customers[index].email = emailVal;
+        customers[index].address = addressVal;
+        customers[index].ratePlan = rateVal;
+        customers[index].jarsDelivered = deliveredVal;
+        customers[index].jarsReturned = returnedVal;
+        customers[index].status = statusVal;
+
+        localStorage.setItem('sjd_customers', JSON.stringify(customers));
+        alert(`Customer account #${idVal} details updated successfully.`);
+        cancelEditCustomerAdmin();
+        renderCustomersTab(document.getElementById('admin-tab-content'));
+    }
+}
+
+function deleteCustomerAdmin(id) {
+    if (confirm(`Are you sure you want to permanently delete customer account #${id}?`)) {
+        const customers = JSON.parse(localStorage.getItem('sjd_customers') || '[]');
+        const updated = customers.filter(c => c.id !== id);
+        localStorage.setItem('sjd_customers', JSON.stringify(updated));
+        
+        alert("Customer account deleted successfully.");
+        cancelEditCustomerAdmin();
+        renderCustomersTab(document.getElementById('admin-tab-content'));
+    }
+}
+
+/* 2. Customer Reviews Management Tab */
+function renderReviewsTab(container) {
+    const reviews = JSON.parse(localStorage.getItem('sjd_reviews') || '[]');
+
+    container.innerHTML = `
+        <div class="admin-tab-header">
+            <h2>Customer Reviews Registry</h2>
+            <span style="font-size: 0.95rem; color: var(--text-muted);">${reviews.length} total reviews logged</span>
+        </div>
+
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">Manage dynamic reviews displayed on the public home page. Toggle visibility status to hide reviews instantly.</p>
+
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Reviewer Name</th>
+                        <th>Location</th>
+                        <th>Rating</th>
+                        <th>Review Comments</th>
+                        <th>Post Date</th>
+                        <th>Visibility Status</th>
+                        <th style="text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${reviews.length === 0 ? '<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">No reviews written yet.</td></tr>' : ''}
+                    ${reviews.map(r => `
+                        <tr>
+                            <td><strong>${r.id}</strong></td>
+                            <td><strong>${r.name}</strong></td>
+                            <td>${r.location}</td>
+                            <td><span style="color: #f59e0b; font-weight: bold;">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span></td>
+                            <td style="font-size: 0.85rem; max-width: 250px; font-style: italic;">"${r.comment}"</td>
+                            <td style="font-size: 0.8rem;">${new Date(r.date).toLocaleDateString()}</td>
+                            <td>
+                                <span class="status-tag" style="background: ${r.status === 'Approved' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(100, 116, 139, 0.1)'}; color: ${r.status === 'Approved' ? '#10b981' : '#64748b'}; font-weight: bold;">
+                                    ${r.status === 'Approved' ? 'Approved (Visible)' : 'Hidden'}
+                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                                    <button class="action-btn" onclick="toggleReviewVisibility('${r.id}')" style="font-size: 0.8rem; padding: 4px 10px;">Toggle</button>
+                                    <button class="action-btn action-btn-delete" onclick="deleteReviewAdmin('${r.id}')" style="font-size: 0.8rem; padding: 4px 10px;">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function toggleReviewVisibility(id) {
+    const reviews = JSON.parse(localStorage.getItem('sjd_reviews') || '[]');
+    const index = reviews.findIndex(r => r.id === id);
+
+    if (index !== -1) {
+        reviews[index].status = reviews[index].status === 'Approved' ? 'Hidden' : 'Approved';
+        localStorage.setItem('sjd_reviews', JSON.stringify(reviews));
+        renderReviews(); // sync homepage
+        renderReviewsTab(document.getElementById('admin-tab-content'));
+    }
+}
+
+function deleteReviewAdmin(id) {
+    if (confirm(`Are you sure you want to delete review #${id}?`)) {
+        const reviews = JSON.parse(localStorage.getItem('sjd_reviews') || '[]');
+        const updated = reviews.filter(r => r.id !== id);
+        localStorage.setItem('sjd_reviews', JSON.stringify(updated));
+        renderReviews(); // sync homepage
+        renderReviewsTab(document.getElementById('admin-tab-content'));
+    }
+}
+
+/* 3. Newsletter Subscribers Tab */
+function renderSubscribersTab(container) {
+    const subs = JSON.parse(localStorage.getItem('sjd_subscribers') || '[]');
+
+    container.innerHTML = `
+        <div class="admin-tab-header">
+            <h2>Newsletter Subscribers</h2>
+            <span style="font-size: 0.95rem; color: var(--text-muted);">${subs.length} emails registered</span>
+        </div>
+
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">View list of community emails that subscribed to Shri Jal Dhara updates from the homepage.</p>
+
+        <div class="table-responsive">
+            <table class="admin-table" style="max-width: 700px;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Email Address</th>
+                        <th>Subscription Date</th>
+                        <th style="text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${subs.length === 0 ? '<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No subscriber records found.</td></tr>' : ''}
+                    ${subs.map((s, idx) => `
+                        <tr>
+                            <td>${idx + 1}</td>
+                            <td><strong>${s.email}</strong></td>
+                            <td style="font-size: 0.85rem;">${new Date(s.date).toLocaleString()}</td>
+                            <td style="text-align: right;">
+                                <button class="action-btn action-btn-delete" onclick="deleteSubscriberAdmin('${s.email}')" style="font-size: 0.8rem; padding: 4px 10px;">Unsubscribe</button>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function deleteSubscriberAdmin(email) {
+    if (confirm(`Are you sure you want to unsubscribe and remove email "${email}"?`)) {
+        const subs = JSON.parse(localStorage.getItem('sjd_subscribers') || '[]');
+        const updated = subs.filter(s => s.email.toLowerCase() !== email.toLowerCase());
+        localStorage.setItem('sjd_subscribers', JSON.stringify(updated));
+        renderSubscribersTab(document.getElementById('admin-tab-content'));
+    }
+}
+
+/* 4. Chatbot Q&A Knowledge Base Tab */
+function renderChatbotTab(container) {
+    const qas = JSON.parse(localStorage.getItem('sjd_chatbot_qa') || '[]');
+
+    container.innerHTML = `
+        <div class="admin-tab-header">
+            <h2>Chatbot Q&A Knowledge Base Settings</h2>
+            <span style="font-size: 0.95rem; color: var(--text-muted);">${qas.length} answers configured</span>
+        </div>
+
+        <div class="routes-layout" style="margin-bottom: 24px;">
+            <!-- Add Intent -->
+            <div class="card glass-panel" style="padding: 24px;">
+                <h4 style="margin: 0 0 16px 0; color: var(--primary-dark); font-size: 1.2rem;">Add Q&A Intent Trigger</h4>
+                <form id="adminAddQaForm" onsubmit="addQaTrigger(event)" style="display: flex; flex-direction: column; gap: 14px;">
+                    <div class="form-group">
+                        <label for="qaTrigger">Keyword Triggers (pipe separated '|'):</label>
+                        <input type="text" id="qaTrigger" required placeholder="e.g. warranty|guarantee|leak">
+                    </div>
+                    <div class="form-group">
+                        <label for="qaReply">Bot Reply Answer:</label>
+                        <textarea id="qaReply" rows="3" required placeholder="Write what the chatbot should say..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 10px;">Create Intent Trigger</button>
+                </form>
+            </div>
+
+            <!-- Edit Intent Wrapper -->
+            <div id="adminEditQaWrapper" class="card glass-panel" style="padding: 24px; display: none;">
+                <h4 style="margin: 0 0 16px 0; color: var(--primary-dark); font-size: 1.2rem;">Edit Q&A Intent</h4>
+                <form id="adminEditQaForm" onsubmit="saveQaTrigger(event)" style="display: flex; flex-direction: column; gap: 14px;">
+                    <input type="hidden" id="eqId">
+                    <div class="form-group">
+                        <label for="eqTrigger">Keyword Triggers (pipe separated '|'):</label>
+                        <input type="text" id="eqTrigger" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eqReply">Bot Reply Answer:</label>
+                        <textarea id="eqReply" rows="4" required></textarea>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" class="btn-primary" style="flex-grow: 1; justify-content: center; padding: 10px;">Save Changes</button>
+                        <button type="button" onclick="cancelEditQa()" class="btn-secondary" style="flex-grow: 1; justify-content: center; padding: 10px;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Keyword Match Triggers</th>
+                        <th>Bot Conversational Reply</th>
+                        <th style="text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${qas.length === 0 ? '<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No intents configured. Chatbot will use fallback queries.</td></tr>' : ''}
+                    ${qas.map(qa => `
+                        <tr>
+                            <td><strong>${qa.id}</strong></td>
+                            <td style="font-family: monospace; font-size: 0.85rem; color: var(--accent); font-weight: bold; max-width: 150px;">${qa.trigger}</td>
+                            <td style="font-size: 0.85rem; max-width: 300px; white-space: pre-wrap;">${qa.reply}</td>
+                            <td style="text-align: right;">
+                                <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                                    <button class="action-btn" onclick="startEditQa('${qa.id}')" style="font-size: 0.8rem; padding: 4px 10px;">Edit</button>
+                                    <button class="action-btn action-btn-delete" onclick="deleteQaAdmin('${qa.id}')" style="font-size: 0.8rem; padding: 4px 10px;">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function addQaTrigger(event) {
+    event.preventDefault();
+    const triggerVal = document.getElementById('qaTrigger').value.trim();
+    const replyVal = document.getElementById('qaReply').value.trim();
+
+    const qas = JSON.parse(localStorage.getItem('sjd_chatbot_qa') || '[]');
+    const newQa = {
+        id: `QA-${Math.floor(10 + Math.random() * 90)}`,
+        trigger: triggerVal,
+        reply: replyVal
+    };
+
+    qas.push(newQa);
+    localStorage.setItem('sjd_chatbot_qa', JSON.stringify(qas));
+
+    document.getElementById('adminAddQaForm').reset();
+    alert("New chatbot intent trigger added successfully!");
+    renderChatbotTab(document.getElementById('admin-tab-content'));
+}
+
+function startEditQa(id) {
+    const qas = JSON.parse(localStorage.getItem('sjd_chatbot_qa') || '[]');
+    const qa = qas.find(x => x.id === id);
+    if (!qa) return;
+
+    const wrapper = document.getElementById('adminEditQaWrapper');
+    wrapper.style.display = 'block';
+
+    document.getElementById('eqId').value = qa.id;
+    document.getElementById('eqTrigger').value = qa.trigger;
+    document.getElementById('eqReply').value = qa.reply;
+
+    wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function cancelEditQa() {
+    document.getElementById('adminEditQaWrapper').style.display = 'none';
+}
+
+function saveQaTrigger(event) {
+    event.preventDefault();
+    const idVal = document.getElementById('eqId').value;
+    const triggerVal = document.getElementById('eqTrigger').value.trim();
+    const replyVal = document.getElementById('eqReply').value.trim();
+
+    const qas = JSON.parse(localStorage.getItem('sjd_chatbot_qa') || '[]');
+    const index = qas.findIndex(x => x.id === idVal);
+
+    if (index !== -1) {
+        qas[index].trigger = triggerVal;
+        qas[index].reply = replyVal;
+        localStorage.setItem('sjd_chatbot_qa', JSON.stringify(qas));
+        alert("Chatbot Q&A intent triggers updated successfully.");
+        cancelEditQa();
+        renderChatbotTab(document.getElementById('admin-tab-content'));
+    }
+}
+
+function deleteQaAdmin(id) {
+    if (confirm(`Are you sure you want to delete chatbot trigger #${id}?`)) {
+        const qas = JSON.parse(localStorage.getItem('sjd_chatbot_qa') || '[]');
+        const updated = qas.filter(x => x.id !== id);
+        localStorage.setItem('sjd_chatbot_qa', JSON.stringify(updated));
+        alert("Intent trigger deleted successfully.");
+        cancelEditQa();
+        renderChatbotTab(document.getElementById('admin-tab-content'));
+    }
+}
+

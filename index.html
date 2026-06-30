@@ -31,6 +31,8 @@
                     <li class="nav-item" onclick="navigateTo('schedules')">Daily Delivery Schedules</li>
                     <li class="nav-item" onclick="navigateTo('about')">About Us</li>
                     <li class="nav-item" onclick="navigateTo('careers')">Careers</li>
+                    <li class="nav-item" onclick="navigateTo('chatbot')">AI Assistant</li>
+                    <li class="nav-item" onclick="navigateTo('account')">My Account</li>
                     <li class="nav-item" onclick="navigateTo('contact')">Contact</li>
                     <li class="nav-item admin-nav-link" onclick="navigateTo('admin')" style="color: var(--accent); font-weight: bold; margin-left: 8px;">Admin Portal</li>
                 </ul>
@@ -164,6 +166,74 @@
                         Contact Support
                     </button>
                 </div>
+            </div>
+
+            <!-- Customer Reviews Section (Live Review System) -->
+            <div class="section-intro" style="margin-top: 60px;">
+                <h2>Customer Reviews</h2>
+                <p>Real feedback from daily jar clients in Sanchi and Salamatpur. Share your experience with us!</p>
+            </div>
+
+            <div class="reviews-wrapper">
+                <!-- Grid of reviews (rendered dynamically) -->
+                <div class="reviews-grid" id="public-reviews-grid">
+                    <!-- Dynamic review cards go here -->
+                </div>
+                
+                <!-- Review Form Toggle -->
+                <div class="review-form-container glass-panel" style="margin-top: 32px; padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleReviewForm()">
+                        <h4 style="margin: 0; color: var(--primary-dark); font-size: 1.25rem;">Write a Customer Review</h4>
+                        <span id="reviewFormToggleBtn" style="font-weight: bold; font-size: 1rem; color: var(--primary); transition: var(--transition);">+ Expand Form</span>
+                    </div>
+                    
+                    <form id="publicReviewForm" onsubmit="handleReviewSubmit(event)" style="display: none; flex-direction: column; gap: 14px; margin-top: 20px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 20px;">
+                        <div class="calc-grid" style="gap: 16px;">
+                            <div class="form-group">
+                                <label for="revName">Your Name:</label>
+                                <input type="text" id="revName" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="revLocation">Location / Area:</label>
+                                <select id="revLocation" required>
+                                    <option value="Sanchi">Sanchi</option>
+                                    <option value="Salamatpur">Salamatpur</option>
+                                    <option value="Other">Other (Raisen region)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="revRating">Rating:</label>
+                            <select id="revRating" required style="color: #f59e0b; font-weight: bold;">
+                                <option value="5">⭐⭐⭐⭐⭐ (5/5 - Perfect)</option>
+                                <option value="4">⭐⭐⭐⭐ (4/5 - Good)</option>
+                                <option value="3">⭐⭐⭐ (3/5 - Average)</option>
+                                <option value="2">⭐⭐ (2/5 - Poor)</option>
+                                <option value="1">⭐ (1/5 - Terrible)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="revComment">Your Comments / Review:</label>
+                            <textarea id="revComment" rows="3" required placeholder="Tell others about our water quality, delivery speed, and overall service..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="align-self: flex-start; padding: 10px 24px;">Post Review Instantly</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup Section -->
+            <div class="newsletter-wrapper glass-panel" style="margin-top: 60px; margin-bottom: 60px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+                <div class="newsletter-content">
+                    <h3 style="color: var(--primary-dark); font-size: 1.5rem; margin: 0 0 8px 0;">Subscribe to Our Newsletter</h3>
+                    <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Get daily hydration tips, seasonal water purity lab reports, and updates on delivery schedules across Sanchi & Salamatpur.</p>
+                </div>
+                <form id="newsletterForm" onsubmit="handleNewsletterSubmit(event)" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <input type="email" id="nlEmail" required placeholder="Enter your email address" style="flex-grow: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--surface-border); outline: none;">
+                        <button type="submit" class="btn-primary" style="white-space: nowrap; padding: 12px 28px;">Subscribe</button>
+                    </div>
+                    <div id="newsletterSuccess" style="display: none; color: var(--accent); font-weight: 600; margin-top: 6px; font-size: 0.9rem;"></div>
+                </form>
             </div>
 
             <!-- Water Purity Standards Teaser -->
@@ -1391,6 +1461,10 @@
                             <h4 style="font-size: 1.15rem; margin-bottom: 4px;">Call or WhatsApp us</h4>
                             <p style="font-size: 0.95rem; margin-bottom: 8px;">Prefer to talk directly? Call or message us and we’ll guide you on jar plans, routes, and pricing.</p>
                             <p style="font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); margin: 6px 0;">Phone / WhatsApp: +91 91833 55900</p>
+                            <a href="https://wa.me/919183355900?text=Hi%20Shri%20Jal%20Dhara,%20I%20would%20like%20to%20enquire%20about%20water%20jar%20refills." target="_blank" class="btn-primary" style="background: #25D366; border-color: #25D366; display: inline-flex; justify-content: center; align-items: center; gap: 8px; margin-top: 8px; font-size: 0.9rem; padding: 8px 16px; width: fit-content; text-decoration: none;">
+                                <svg style="width: 18px; height: 18px; fill: white;" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.197 1.449 4.825 1.451 5.436 0 9.859-4.416 9.863-9.852.002-2.634-1.02-5.11-2.885-6.977a9.782 9.782 0 00-6.979-2.881c-5.433 0-9.858 4.417-9.863 9.853-.002 1.706.453 3.37 1.317 4.862L1.87 20.21l4.777-1.056z"/></svg>
+                                Chat on WhatsApp
+                            </a>
                             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;">Timings: 8:00 AM to 8:00 PM, all days</p>
                             <span style="font-size: 0.85rem; font-style: italic; color: var(--accent);">If we miss your call, we will call you back as soon as we can.</span>
                         </div>
@@ -1495,6 +1569,202 @@
             </div>
         </section>
 
+        <!-- DEDICATED AI WATER ASSISTANT VIEW -->
+        <section id="chatbot-view" class="page-view">
+            <div class="chatbot-split-layout">
+                <!-- Left Info Card -->
+                <div class="card glass-panel chat-info-card" style="padding: 32px; display: flex; flex-direction: column; justify-content: flex-start; gap: 16px;">
+                    <div style="text-align: center; margin-bottom: 8px;">
+                        <div class="bot-avatar-large" style="width: 70px; height: 70px; margin: 0 auto 12px auto; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; box-shadow: var(--shadow-md);">
+                            💧
+                        </div>
+                        <h3 style="font-size: 1.45rem; color: var(--primary-dark); margin: 0;">Jal Sanghi</h3>
+                        <span style="font-size: 0.85rem; color: var(--accent); font-weight: 600;">Active AI Assistant</span>
+                    </div>
+                    
+                    <h4 style="font-size: 1.1rem; color: var(--text-main); margin: 8px 0 4px 0; border-bottom: 1px dashed rgba(0,0,0,0.06); padding-bottom: 8px;">Ask me anything about:</h4>
+                    <ul class="chat-faq-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem; color: var(--text-muted);">
+                        <li>💧 <strong>Water Purity:</strong> Ask about RO+UV treatments or quality testing.</li>
+                        <li>💰 <strong>Price List:</strong> Check delivery rates for standard jars, campers, or bulk packages.</li>
+                        <li>🚚 <strong>Service Areas:</strong> Find routes and timings in Sanchi & Salamatpur.</li>
+                        <li>📅 <strong>Orders & Booking:</strong> Book a jar delivery instantly right in the chat!</li>
+                    </ul>
+
+                    <div style="margin-top: 16px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 16px;">
+                        <button onclick="navigateTo('contact')" class="btn-secondary" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 10px;">Contact Human Helpdesk</button>
+                    </div>
+                </div>
+
+                <!-- Right Chat Card -->
+                <div class="card glass-panel chat-container-card" style="display: flex; flex-direction: column; height: 550px; overflow: hidden; padding: 0;">
+                    <!-- Chat Header -->
+                    <div class="chat-header-banner" style="background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; padding: 16px 24px; display: flex; align-items: center; gap: 12px;">
+                        <div style="font-size: 1.5rem;">💧</div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1.1rem; color: white;">Chat with Jal Sanghi</h4>
+                            <span style="font-size: 0.75rem; opacity: 0.9; display: flex; align-items: center; gap: 4px;">
+                                <span style="width: 6px; height: 6px; background: #4ade80; border-radius: 50%; display: inline-block;"></span>
+                                Online & ready to assist
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Messages Area -->
+                    <div class="chat-messages-area" id="page-chat-messages" style="flex-grow: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; background: rgba(2, 132, 199, 0.01);">
+                        <!-- Dynamic chat messages go here -->
+                    </div>
+                    
+                    <!-- Quick Reply Chips -->
+                    <div class="chat-chips-area" id="page-chat-chips" style="padding: 12px 24px; display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px solid rgba(0,0,0,0.04); background: white;">
+                        <!-- Chips loaded by JS -->
+                    </div>
+                    
+                    <!-- Input Form -->
+                    <form id="pageChatForm" onsubmit="handlePageChatSubmit(event)" style="display: flex; padding: 12px 24px; gap: 12px; border-top: 1px solid rgba(0,0,0,0.08); background: white;">
+                        <input type="text" id="pageChatInput" placeholder="Ask about prices, routes, water purity, or booking..." required style="flex-grow: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--surface-border); outline: none; font-size: 0.95rem;">
+                        <button type="submit" class="btn-primary" style="padding: 12px 24px;">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- USER PROFILE / ACCOUNT PAGE -->
+        <section id="account-view" class="page-view">
+            <!-- Renders when NOT logged in -->
+            <div id="user-logged-out-state" class="grid-2" style="gap: 32px; align-items: start;">
+                <!-- Login card -->
+                <div class="card glass-panel" style="padding: 32px;">
+                    <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 8px;">Customer Log In</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">Enter your mobile number and password to view your jar balances, schedules, and profile details.</p>
+                    
+                    <form id="userLoginForm" onsubmit="handleCustomerLogin(event)" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="form-group">
+                            <label for="loginPhone">Registered Mobile:</label>
+                            <input type="tel" id="loginPhone" required placeholder="10-digit mobile number">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPass">Password:</label>
+                            <input type="password" id="loginPass" required placeholder="Enter account password">
+                        </div>
+                        <div id="userLoginError" style="color: #dc2626; font-size: 0.9rem; font-weight: 600; display: none;"></div>
+                        <button type="submit" class="btn-primary" style="justify-content: center; padding: 12px; margin-top: 10px;">Log In to My Portal</button>
+                    </form>
+                </div>
+
+                <!-- Registration card -->
+                <div class="card glass-panel" style="padding: 32px;">
+                    <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 8px;">New Customer Registration</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">Set up a new client account to track deliveries, empty returned jars, and start daily water jar supply.</p>
+                    
+                    <form id="userRegisterForm" onsubmit="handleCustomerRegister(event)" style="display: flex; flex-direction: column; gap: 14px;">
+                        <div class="calc-grid" style="gap: 16px;">
+                            <div class="form-group">
+                                <label for="regName">Your Name:</label>
+                                <input type="text" id="regName" required placeholder="Enter full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="regPhone">Mobile Number:</label>
+                                <input type="tel" id="regPhone" required placeholder="10-digit mobile">
+                            </div>
+                        </div>
+                        <div class="calc-grid" style="gap: 16px;">
+                            <div class="form-group">
+                                <label for="regEmail">Email (optional):</label>
+                                <input type="email" id="regEmail" placeholder="Enter email address">
+                            </div>
+                            <div class="form-group">
+                                <label for="regPass">Account Password:</label>
+                                <input type="password" id="regPass" required placeholder="Create secure password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regAddress">Full Delivery Address:</label>
+                            <textarea id="regAddress" rows="2" required placeholder="Colony, street address, and landmarks in Sanchi or Salamatpur"></textarea>
+                        </div>
+                        <div id="userRegisterError" style="color: #dc2626; font-size: 0.9rem; font-weight: 600; display: none;"></div>
+                        <button type="submit" class="btn-primary" style="justify-content: center; padding: 12px; margin-top: 10px;">Register Account</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Renders when LOGGED IN -->
+            <div id="user-logged-in-state" style="display: none; flex-direction: column; gap: 32px; width: 100%;">
+                <div class="user-dashboard-header glass-panel" style="padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <div>
+                        <h2 style="margin: 0;">Welcome, <span id="dashCustomerName" style="color: var(--primary-dark);">Client</span>!</h2>
+                        <p style="margin: 4px 0 0 0; color: var(--text-muted); font-size: 0.95rem;">Client ID: <strong id="dashCustomerId">SJD-XXXX</strong> &bull; Member Status: <span class="status-tag" id="dashCustomerStatus" style="font-weight: bold;">Active</span></p>
+                    </div>
+                    <button class="logout-btn" onclick="handleCustomerLogout()" style="margin: 0; padding: 8px 18px; border-radius: 20px;">Log Out Account</button>
+                </div>
+
+                <div class="grid-3" style="gap: 24px;">
+                    <!-- Ledger Card 1: Delivered -->
+                    <div class="card glass-panel ledger-stat-card" style="text-align: center; border-left: 5px solid var(--primary-dark); padding: 20px;">
+                        <h5 style="margin: 0 0 4px 0; font-size: 0.95rem; color: var(--text-muted);">Jars/Campers Delivered</h5>
+                        <span class="stat-val" id="dashJarsDelivered" style="color: var(--primary-dark); font-size: 2.2rem; font-weight: 700; display: block; margin: 10px 0;">0</span>
+                        <span class="stat-desc" style="font-size: 0.85rem; color: var(--text-muted);">Total supplied this cycle</span>
+                    </div>
+                    <!-- Ledger Card 2: Returned -->
+                    <div class="card glass-panel ledger-stat-card" style="text-align: center; border-left: 5px solid var(--accent); padding: 20px;">
+                        <h5 style="margin: 0 0 4px 0; font-size: 0.95rem; color: var(--text-muted);">Empty Jars Returned</h5>
+                        <span class="stat-val" id="dashJarsReturned" style="color: var(--accent); font-size: 2.2rem; font-weight: 700; display: block; margin: 10px 0;">0</span>
+                        <span class="stat-desc" style="font-size: 0.85rem; color: var(--text-muted);">Sanitized empty cans returned</span>
+                    </div>
+                    <!-- Ledger Card 3: Outstanding -->
+                    <div class="card glass-panel ledger-stat-card" style="text-align: center; border-left: 5px solid #f97316; padding: 20px;">
+                        <h5 style="margin: 0 0 4px 0; font-size: 0.95rem; color: var(--text-muted);">Outstanding Jar Balance</h5>
+                        <span class="stat-val" id="dashJarsOutstanding" style="color: #f97316; font-size: 2.2rem; font-weight: 700; display: block; margin: 10px 0;">0</span>
+                        <span class="stat-desc" style="font-size: 0.85rem; color: var(--text-muted);">Bottles currently at your address</span>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="gap: 32px; align-items: start;">
+                    <!-- Profile Card & Refill Action -->
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <div class="card glass-panel" style="padding: 24px;">
+                            <h4 style="margin: 0 0 16px 0; color: var(--primary-dark); font-size: 1.25rem;">My Water Jar Subscription</h4>
+                            <div style="font-size: 0.95rem; line-height: 1.8; color: var(--text-main); display: flex; flex-direction: column; gap: 8px;">
+                                <div>📍 <strong>Delivery Address:</strong> <span id="dashCustomerAddress">Address</span></div>
+                                <div>🏷️ <strong>Assigned Rate Plan:</strong> <span id="dashCustomerRatePlan">Standard (₹30 per jar)</span></div>
+                                <div>📅 <strong>Preferred Delivery Schedule:</strong> Daily morning refills</div>
+                            </div>
+                            <div style="margin-top: 20px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 16px; display: flex; gap: 12px;">
+                                <button class="btn-primary" onclick="openEditProfileModal()" style="font-size: 0.85rem; padding: 8px 14px;">Edit Profile Info</button>
+                                <button class="btn-secondary" onclick="requestCustomerRefill()" style="font-size: 0.85rem; padding: 8px 14px;">Request Refill Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security & Credentials Change Card -->
+                    <div class="card glass-panel" style="padding: 24px;">
+                        <h4 style="margin: 0 0 8px 0; color: var(--primary-dark); font-size: 1.25rem;">Change Username & Password</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Change your login username (mobile) and password securely. Protected by double verification.</p>
+                        
+                        <form id="changeCredentialsForm" onsubmit="initiateChangeCredentials(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                            <div class="form-group">
+                                <label for="changeCurrentPass" style="font-size: 0.85rem;">Current Password:</label>
+                                <input type="password" id="changeCurrentPass" required placeholder="Verify current password" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--surface-border);">
+                            </div>
+                            <div class="form-group">
+                                <label for="changeNewUser" style="font-size: 0.85rem;">New Username / Mobile:</label>
+                                <input type="text" id="changeNewUser" required placeholder="Enter new mobile number" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--surface-border);">
+                            </div>
+                            <div class="form-group">
+                                <label for="changeNewPass" style="font-size: 0.85rem;">New Password:</label>
+                                <input type="password" id="changeNewPass" required placeholder="Enter new password" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--surface-border);">
+                            </div>
+                            <div class="form-group">
+                                <label for="changeConfirmPass" style="font-size: 0.85rem;">Confirm New Password:</label>
+                                <input type="password" id="changeConfirmPass" required placeholder="Re-type new password" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--surface-border);">
+                            </div>
+                            <div id="credentialChangeError" style="color: #dc2626; font-size: 0.85rem; font-weight: 600; display: none;"></div>
+                            <button type="submit" class="btn-primary" style="justify-content: center; padding: 10px; font-size: 0.9rem; margin-top: 4px; width: 100%;">Update Login Credentials</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ADMIN PORTAL VIEW -->
         <section id="admin-view" class="page-view">
             <!-- Admin Login Sub-view -->
@@ -1515,6 +1785,37 @@
                     </div>
                     <div id="adminLoginError" class="login-error-message" style="display: none;"></div>
                     <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">Login securely</button>
+                    
+                    <!-- Sign In with Google -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 12px 0 6px 0;">
+                        <span style="height: 1px; background: rgba(0,0,0,0.1); flex-grow: 1;"></span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: bold; text-transform: uppercase;">Or</span>
+                        <span style="height: 1px; background: rgba(0,0,0,0.1); flex-grow: 1;"></span>
+                    </div>
+                    <button type="button" onclick="startAdminGoogleAuth()" class="btn-secondary" style="width: 100%; justify-content: center; align-items: center; gap: 10px; padding: 10px; background: white; border: 1px solid #d1d5db; color: #374151; font-weight: 500; display: flex;">
+                        <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5.04c1.7 0 3.22.58 4.42 1.71l3.3-3.3C17.74 1.58 15.06 1 12 1 7.28 1 3.25 3.75 1.25 7.75l3.87 3C6.07 7.72 8.81 5.04 12 5.04z"/><path fill="#4285F4" d="M23.49 12.27c0-.82-.07-1.61-.21-2.38H12v4.51h6.44c-.28 1.47-1.11 2.71-2.36 3.55l3.67 2.84c2.14-1.97 3.74-4.88 3.74-8.52z"/><path fill="#FBBC05" d="M5.12 14.75c-.24-.72-.37-1.49-.37-2.75s.13-2.03.37-2.75L1.25 6.25C.45 7.85 0 9.8 0 12s.45 4.15 1.25 5.75l3.87-3z"/><path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.92l-3.67-2.84c-1.1.74-2.5 1.18-4.29 1.18-3.19 0-5.93-2.68-6.88-5.71l-3.87 3C3.25 20.25 7.28 23 12 23z"/></svg>
+                        Sign in with Google
+                    </button>
+                </form>
+            </div>
+
+            <!-- Admin 2-Step Verification Sub-view -->
+            <div id="admin-2fa-subview" class="admin-login-container glass-panel" style="display: none;">
+                <div class="login-header" style="text-align: center;">
+                    <div class="success-circle" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width: 60px; height: 60px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 12px auto;">
+                        🔒
+                    </div>
+                    <h2>2-Step Verification</h2>
+                    <p id="admin2faInstructions" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">A verification code has been sent to your registered phone number (+91 ******5900).</p>
+                </div>
+                <form id="admin2faForm" onsubmit="handleAdmin2faVerify(event)" style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+                    <div class="form-group" style="text-align: center;">
+                        <label for="admin2faCode" style="font-weight: 500;">Enter 6-digit verification code:</label>
+                        <input type="text" id="admin2faCode" required placeholder="Enter code" maxlength="6" style="text-align: center; font-size: 1.3rem; letter-spacing: 6px; padding: 10px; width: 200px; margin: 8px auto; display: block; border-radius: 8px; border: 1px solid var(--surface-border); outline: none;">
+                    </div>
+                    <div id="admin2faError" class="login-error-message" style="display: none; text-align: center;"></div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 10px;">Verify identity & log in</button>
+                    <button type="button" onclick="cancelAdmin2fa()" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 4px; padding: 10px;">Cancel & Go Back</button>
                 </form>
             </div>
 
@@ -1531,29 +1832,19 @@
                             </div>
                         </div>
                         <nav class="admin-sidebar-nav">
-                            <button class="sidebar-tab-btn active" id="btn-tab-dashboard" onclick="switchAdminTab('dashboard')">
-                                📊 Dashboard Overview
-                            </button>
-                            <button class="sidebar-tab-btn" id="btn-tab-enquiries" onclick="switchAdminTab('enquiries')">
-                                ✉️ Enquiries & Bookings
-                            </button>
-                            <button class="sidebar-tab-btn" id="btn-tab-careers" onclick="switchAdminTab('careers')">
-                                💼 Job Applications
-                            </button>
-                            <button class="sidebar-tab-btn" id="btn-tab-rates" onclick="switchAdminTab('rates')">
-                                💰 Product Rates Sheet
-                            </button>
-                            <button class="sidebar-tab-btn" id="btn-tab-routes" onclick="switchAdminTab('routes')">
-                                🚚 Delivery Routes
-                            </button>
-                            <button class="sidebar-tab-btn" id="btn-tab-settings" onclick="switchAdminTab('settings')">
-                                ⚙️ Security & Settings
-                            </button>
+                            <button class="sidebar-tab-btn active" id="btn-tab-dashboard" onclick="switchAdminTab('dashboard')">Dashboard Overview</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-customers" onclick="switchAdminTab('customers')">Customers Registry</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-enquiries" onclick="switchAdminTab('enquiries')">Enquiries & Bookings</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-careers" onclick="switchAdminTab('careers')">Job Applications</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-rates" onclick="switchAdminTab('rates')">Product Rates Sheet</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-routes" onclick="switchAdminTab('routes')">Delivery Routes</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-reviews" onclick="switchAdminTab('reviews')">Customer Reviews</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-subscribers" onclick="switchAdminTab('subscribers')">Newsletter Subscribers</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-chatbot" onclick="switchAdminTab('chatbot')">Chatbot Q&A Settings</button>
+                            <button class="sidebar-tab-btn" id="btn-tab-settings" onclick="switchAdminTab('settings')">Portal settings & Recoveries</button>
                         </nav>
                     </div>
-                    <button class="logout-btn" onclick="handleAdminLogout()">
-                        🚪 Logout Session
-                    </button>
+                    <button class="logout-btn" onclick="handleAdminLogout()">Logout Session</button>
                 </aside>
 
                 <!-- Content Area -->
@@ -1628,6 +1919,94 @@
             </div>
         </div>
     </footer>
+
+    <!-- User Profile Edit Modal -->
+    <div id="editProfileModal" class="modal-overlay" style="display: none;">
+        <div class="modal-container glass-panel" style="max-width: 500px; width: 90%; margin: 10% auto; padding: 24px; position: relative;">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 12px;">
+                <h3 style="margin: 0; color: var(--primary-dark);">Edit Profile Information</h3>
+                <button onclick="closeEditProfileModal()" class="modal-close-btn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+            </div>
+            <form id="editProfileForm" onsubmit="handleProfileUpdateSubmit(event)" style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
+                <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="editProfileName" style="font-size: 0.9rem; font-weight: 500;">Full Name:</label>
+                    <input type="text" id="editProfileName" required style="padding: 10px; border-radius: 6px; border: 1px solid var(--surface-border);">
+                </div>
+                <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="editProfileEmail" style="font-size: 0.9rem; font-weight: 500;">Email Address:</label>
+                    <input type="email" id="editProfileEmail" style="padding: 10px; border-radius: 6px; border: 1px solid var(--surface-border);">
+                </div>
+                <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="editProfileAddress" style="font-size: 0.9rem; font-weight: 500;">Delivery Address:</label>
+                    <textarea id="editProfileAddress" rows="3" required style="padding: 10px; border-radius: 6px; border: 1px solid var(--surface-border); resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="justify-content: center; padding: 12px; margin-top: 10px;">Save Profile Info</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- User Credential 2-Step Verification Modal -->
+    <div id="user2faModal" class="modal-overlay" style="display: none;">
+        <div class="modal-container glass-panel" style="max-width: 450px; width: 90%; margin: 10% auto; padding: 24px; text-align: center; position: relative;">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 12px;">
+                <h3 style="margin: 0; color: var(--primary-dark);">User 2-Step Verification</h3>
+                <button onclick="closeUser2faModal()" class="modal-close-btn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+            </div>
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 14px; align-items: center;">
+                <div class="success-circle" style="background: rgba(2, 132, 199, 0.1); color: var(--primary); width: 60px; height: 60px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                    🔒
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
+                    To complete your credential changes, please enter the 6-digit verification code sent to your registered mobile number.
+                </p>
+                <div class="form-group" style="width: 100%;">
+                    <input type="text" id="user2faInput" required placeholder="Enter 6-digit code" maxlength="6" style="text-align: center; font-size: 1.3rem; letter-spacing: 6px; padding: 10px; width: 200px; border-radius: 8px; border: 1px solid var(--surface-border); outline: none;">
+                </div>
+                <div id="user2faError" style="color: #dc2626; font-size: 0.85rem; font-weight: 600; display: none;"></div>
+                <button onclick="verifyUser2faCode()" class="btn-primary" style="width: 100%; justify-content: center; padding: 10px; margin-top: 8px;">Verify & Update Credentials</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Action Button (FAB) -->
+    <a href="https://wa.me/919183355900?text=Hi%20Shri%20Jal%20Dhara,%20I%20would%20like%20to%20enquire%20about%20water%20jar%20refills." target="_blank" id="whatsapp-fab" title="Chat on WhatsApp" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.197 1.449 4.825 1.451 5.436 0 9.859-4.416 9.863-9.852.002-2.634-1.02-5.11-2.885-6.977a9.782 9.782 0 00-6.979-2.881c-5.433 0-9.858 4.417-9.863 9.853-.002 1.706.453 3.37 1.317 4.862L1.87 20.21l4.777-1.056z"/></svg>
+    </a>
+
+    <!-- AI Chatbot Floating Widget -->
+    <div id="chatbot-widget-container">
+        <button id="chatbot-fab" onclick="toggleChatbotWidget()" title="Jal Sanghi AI Assistant" aria-label="AI Chatbot">
+            <span id="chatbot-fab-badge" class="fab-badge">1</span>
+            💧
+        </button>
+        
+        <div id="chatbot-drawer" class="glass-panel" style="display: none;">
+            <div class="drawer-header" style="background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 1.2rem;">💧</span>
+                    <div>
+                        <h4 style="margin: 0; font-size: 0.95rem; color: white;">Jal Sanghi AI</h4>
+                        <span style="font-size: 0.7rem; opacity: 0.9;">Online (AI Assistant)</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button onclick="minimizeChatbotWidget()" class="drawer-control-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 1rem; padding: 0 4px;">&minus;</button>
+                    <button onclick="toggleChatbotWidget()" class="drawer-control-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 1rem; padding: 0 4px;">&times;</button>
+                </div>
+            </div>
+            
+            <div class="drawer-messages" id="drawer-chat-messages" style="height: 300px; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: rgba(2, 132, 199, 0.01); font-size: 0.85rem;">
+            </div>
+            
+            <div class="drawer-chips" id="drawer-chat-chips" style="padding: 8px 12px; display: flex; gap: 6px; flex-wrap: wrap; background: white; border-top: 1px solid rgba(0,0,0,0.04); font-size: 0.8rem;">
+            </div>
+            
+            <form id="drawerChatForm" onsubmit="handleDrawerChatSubmit(event)" style="display: flex; padding: 8px 12px; gap: 8px; border-top: 1px solid rgba(0,0,0,0.08); background: white; margin: 0;">
+                <input type="text" id="drawerChatInput" placeholder="Type a message..." required style="flex-grow: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--surface-border); outline: none; font-size: 0.85rem;">
+                <button type="submit" class="btn-primary" style="padding: 8px 14px; font-size: 0.85rem;">Send</button>
+            </form>
+        </div>
+    </div>
 
     <!-- App Logic Scripts -->
     <script src="js/app.js"></script>
